@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>simplexR</title>
+    <link>/</link>
+    <description>Recent content on simplexR</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 26 May 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Dummy simplexR post</title>
+      <link>/2018/05/26/dummy/</link>
+      <pubDate>Sat, 26 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/2018/05/26/dummy/</guid>
+      <description>Information about simplexR package.</description>
+    </item>
+    
+    <item>
+      <title>About</title>
+      <link>/about/</link>
+      <pubDate>Thu, 05 May 2016 21:48:51 -0700</pubDate>
+      
+      <guid>/about/</guid>
+      <description>This is the simplexR package. It will provide a function to provide the Simplex algorithm in order to solve Linear Programs.
+A Linear Program is given by:
+$$ \max { c^T x \mid Ax \leq b, x \geq 0 } $$</description>
+    </item>
+    
+  </channel>
+</rss>
