@@ -7,6 +7,7 @@
 
 ```
 
+Project page <https://dirkdegel.github.io/simplexR>
 
 # Simplex Algorithm
 
