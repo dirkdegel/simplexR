@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://dirkdegel.github.io/simplexR/index.html</loc>
+  </url>
+  <url>
+    <loc>https://dirkdegel.github.io/simplexR/reference/construct_tableau.html</loc>
+  </url>
+  <url>
+    <loc>https://dirkdegel.github.io/simplexR/reference/get_pivot_column.html</loc>
+  </url>
+  <url>
+    <loc>https://dirkdegel.github.io/simplexR/reference/get_pivot_row.html</loc>
+  </url>
+  <url>
+    <loc>https://dirkdegel.github.io/simplexR/reference/optimality_check.html</loc>
+  </url>
+  <url>
+    <loc>https://dirkdegel.github.io/simplexR/reference/pivot.html</loc>
+  </url>
+  <url>
+    <loc>https://dirkdegel.github.io/simplexR/reference/simplex.html</loc>
+  </url>
+</urlset>
