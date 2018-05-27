@@ -1,0 +1,12 @@
+Package: simplexR
+Type: Package
+Title: Simplex Algorithm
+Version: 0.1.0
+Author: Dirk Degel 
+Maintainer: Dirk Degel <dirk.degel@gmail.com>
+Description: Solves Linear Programs in canonical form.
+    This algorithm is just for teaching purpose not to solve real world problems.
+License: CC0
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.0.1
