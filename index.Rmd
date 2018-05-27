@@ -1,0 +1,307 @@
+# Install
+
+```{r}
+
+# library(devtools)
+# install_github("dirkdegel/simplexR")
+
+```
+
+
+# Simplex Algorithm
+
+```{r message=FALSE, warning=FALSE, includet=FALSE}
+
+library(gMOIP)
+
+```
+
+
+```{r}
+
+construct_tableau <- function(A, b, c, sense){
+  m <- nrow(A)
+  if(sense == 1){ # max
+    c <- -1 * c
+  }
+  t <- rbind(cbind(A, diag(m), b), c(c, rep(0, m + 1)))
+  return(t)
+}
+
+```
+
+
+```{r}
+
+optimality_check <- function(t){
+  if(min(t[nrow(t), 1:ncol(t) - 1]) < 0){
+    return(FALSE) # not optimal
+  }
+  else{
+    return(TRUE) # optimal
+  }
+}
+
+```
+
+
+```{r}
+
+get_pivot_column <- function(t){
+  return(which.min(t[nrow(t), 1:ncol(t) - 1]))
+}
+
+```
+
+
+```{r}
+
+get_pivot_row <- function(t, pivot_column){
+  lhs <- t[1:nrow(t) - 1, pivot_column]
+  rhs <- t[1:nrow(t) - 1, ncol(t)]
+  if(max(lhs) < 0){
+    print("Problem is unbounded -> stop execution")
+    return(-1)
+  }
+  else{
+    theta <- rhs / lhs
+    temp <- length(theta)
+    for(i in 1:temp){
+      if(theta[i] <= 0) # < ???
+        theta[i] <- Inf
+    }
+    return(which.min(theta))
+  }
+}
+
+```
+
+
+```{r}
+
+pivot <- function(t, pivot_row, pivot_column){
+  pivot_elemnt <- t[pivot_row, pivot_column]
+  t[pivot_row, ] <- t[pivot_row, ] / pivot_elemnt
+  nr <- nrow(t)
+  for(r in 1:nr){
+    if(r != pivot_row){
+      t[r, ] <- t[r, ] - t[r, pivot_column] * t[pivot_row, ] 
+    }
+  }
+  return(t)
+}
+
+```
+
+
+```{r}
+
+simplex <- function(A, b, c, sense){
+  tableau <- construct_tableau(A, b, c, sense)
+  print("Initial Tableau (Tableau 0)")
+  print(tableau)
+  iter <- 1
+  while(!optimality_check(tableau) & iter < 100){
+    print("----------------------------------------------")
+    print(paste("Iteration", iter))
+    print("----------------------------------------------")
+    pivot_column <- get_pivot_column(tableau)
+    print(paste("Pivot column:", pivot_column))
+    pivot_row <- get_pivot_row(tableau, pivot_column)
+    if(pivot_row == -1){break()}
+    print(paste("Pivot row:", pivot_row))
+    tableau <- pivot(tableau, pivot_row, pivot_column)
+    print(paste("New tableau at the end of iteration", iter))
+    print(tableau)
+    iter <- iter + 1 
+  }
+  print("----------------------------------------------")
+  print("Status: ")
+  print("----------------------------------------------")
+}
+
+```
+
+# Examples
+
+## Standard Case
+
+$$
+\begin{array}{rrcrcr}
+\max  & 2x_1 & + & 1x_2 & \\
+s.t.  & 1x_1 &   &      & \leq &  5 \\
+      & 4x_1 & + & 1x_2 & \leq & 25 \\
+      &  x_1,&   &  x_2 & \geq & 0
+\end{array}
+$$
+
+```{r}
+
+A = matrix(c(1, 0, 
+             4, 1), nrow = 2, ncol = 2, byrow = TRUE)
+b = c(5, 25)
+c = c(2, 1)
+sense = 1
+
+simplex(A, b, c, sense)
+
+```
+
+```{r}
+cPoints <- cornerPoints(A, b)
+plotPolytope(cPoints, cPoints, iso = c, crit = "max")
+```
+
+
+
+## Standard Case 2
+
+--- Werners, Brigitte - Grundlagen des Operations Research (p. 60)
+
+$$
+\begin{array}{rrcrcr}
+\max  & 3x_1 & + & 2x_2 & \\
+s.t.  & 2x_1 & + & 1x_2 & \leq & 22 \\
+      & 1x_1 & + & 2x_2 & \leq & 23 \\
+      & 4x_1 & + & 1x_2 & \leq & 40 \\
+      &  x_1,&  &  x_2 & \geq & 0
+\end{array}
+$$
+
+```{r}
+
+A = matrix(c(2, 1, 
+             1, 2,
+             4, 1), nrow = 3, ncol = 2, byrow = TRUE)
+b = c(22, 23, 40)
+c = c(3, 2)
+sense = 1
+
+simplex(A, b, c, sense)
+
+```
+
+```{r}
+cPoints <- cornerPoints(A, b)
+plotPolytope(cPoints, cPoints, iso = c, crit = "max")
+```
+
+## Unbounded Feasible Region, Optimal Solution
+
+$$
+\begin{array}{rrcrcr}
+\max  &-2x_1 & + & 3x_2 & \\
+s.t.  &-1x_1 & + & 1x_2 & \leq & 2 \\
+      &-1x_1 & + & 2x_2 & \leq & 6 \\
+      &      &   & 1x_2 & \leq & 5 \\
+      &  x_1,&  &  x_2 & \geq & 0
+\end{array}
+$$
+
+```{r}
+
+A = matrix(c(-1, 1,
+             -1, 2,
+              0, 1), nrow = 3, ncol = 2, byrow = TRUE)
+b = c(2, 6, 5)
+c = c(-2, 3)
+sense = 1
+
+simplex(A, b, c, sense)
+
+```
+
+
+## Unbounded Feasible Region, no Optimal Solution 
+
+--- Werners, Brigitte - Grundlagen des Operations Research (p. 60)
+
+$$
+\begin{array}{rrcrcr}
+\max  & 2x_1 & + & 4x_2 & \\
+s.t.  &-2x_1 & + & 3x_2 & \leq & 12 \\
+      &-1x_1 & + & 3x_2 & \leq & 18 \\
+      &  x_1,&  &  x_2 & \geq & 0
+\end{array}
+$$
+
+```{r}
+
+# unbounded feasible region, no optimal solution exists
+
+A = matrix(c(-2, 3,
+             -1, 3), nrow = 2, ncol = 2, byrow = TRUE)
+b = c(12, 18)
+c = c(2, 4)
+sense = 1
+
+simplex(A, b, c, sense)
+
+```
+
+
+## Dual Degeneracy 
+
+--- Werners, Brigitte - Grundlagen des Operations Research (p. 62)
+
+$$
+\begin{array}{rrcrcr}
+\max  & 3x_1 & + &1.5x_2 & \\
+s.t.  & 2x_1 & + & 1x_2 & \leq & 22 \\
+      & 1x_1 & + & 2x_2 & \leq & 23 \\
+      & 4x_1 & + & 1x_2 & \leq & 40 \\
+      &  x_1,&  &  x_2 & \geq & 0
+\end{array}
+$$
+
+```{r}
+
+A = matrix(c(2, 1,
+             1, 2,
+             4, 1), nrow = 3, ncol = 2, byrow = TRUE)
+b = c(22, 23, 40)
+c = c(3, 1.5)
+sense = 1
+
+simplex(A, b, c, sense)
+
+```
+
+```{r}
+cPoints <- cornerPoints(A, b)
+plotPolytope(cPoints, cPoints, iso = c, crit = "max")
+```
+
+## Primal Degeneracy
+
+--- Werners, Brigitte - Grundlagen des Operations Research (p. 65)
+
+$$
+\begin{array}{rrcrcr}
+\max  & 3x_1 & + & 2x_2 & \\
+s.t.  & 2x_1 & + & 1x_2 & \leq & 22 \\
+      & 1x_1 & + & 2x_2 & \leq & 23 \\
+      & 4x_1 & + & 1x_2 & \leq & 40 \\
+      & 2x_1 & + & 0.75x_2 & \leq & 21 \\
+      &  x_1,&  &  x_2 & \geq & 0
+\end{array}
+$$
+
+```{r}
+
+A = matrix(c(2, 1,
+             1, 2,
+             4, 1,
+             2, 3/4), nrow = 4, ncol = 2, byrow = TRUE)
+b = c(22, 23, 40, 21)
+c = c(3, 2)
+sense = 1
+
+simplex(A, b, c, sense)
+
+```
+
+```{r}
+cPoints <- cornerPoints(A, b)
+plotPolytope(cPoints, cPoints, iso = c, crit = "max")
+```

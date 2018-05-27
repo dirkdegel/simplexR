@@ -7,17 +7,16 @@
 #'
 #' Constrcut an initial Simplex tableau of the linear program in canonical form for given A, b, c, sense (max = 1)
 #'
-#' @param A a matrix, the coefficient matrix of the LP
-#' @param b a vector, RHS
-#' @param c a vector, objective function coefficients
-#' @param sense max = 1
+#' @param A matrix, the coefficient matrix of the LP
+#' @param b vector, RHS
+#' @param c vector, objective function coefficients
+#' @param sense integer, 1 = max
 #'
-#' @return a matrix that represents the initial Simplax tableau
+#' @return A matrix that represents the initial Simplax tableau
 #' @export
 #'
 construct_tableau <- function(A, b, c, sense){
   m <- nrow(A)
-  #dimnames(A) <- list(1:m)
   if(sense == 1){ # max
     c <- -1 * c
   }
@@ -32,7 +31,7 @@ construct_tableau <- function(A, b, c, sense){
 
 #' optimality_check
 #'
-#' @param t a Simplex tableau
+#' @param t matrix a Simplex tableau
 #'
 #' @return logical (TRUE = optimal, FALSE not optimal)
 #' @export
@@ -53,7 +52,7 @@ optimality_check <- function(t){
 
 #' get_pivot_column
 #'
-#' @param t a Simplex tableau
+#' @param t matrix, a Simplex tableau
 #'
 #' @return pivot column
 #' @export
@@ -69,8 +68,8 @@ get_pivot_column <- function(t){
 
 #' get_pivot_row
 #'
-#' @param t a Simplex tableau
-#' @param pivot_column the pivot column
+#' @param t matrix, a Simplex tableau
+#' @param pivot_column integer, the pivot column
 #'
 #' @return pivot row
 #' @export
@@ -80,7 +79,6 @@ get_pivot_row <- function(t, pivot_column){
   rhs <- t[1:nrow(t) - 1, ncol(t)]
   if(max(lhs) < 0){
     print("Problem is unbounded -> stop execution")
-    #break
     return(-1)
   }
   else{
@@ -101,9 +99,9 @@ get_pivot_row <- function(t, pivot_column){
 
 #' pivot
 #'
-#' @param t a Simplex tableau
-#' @param pivot_row the pivot row
-#' @param pivot_column the pivot column
+#' @param t matrix, a Simplex tableau
+#' @param pivot_row integer, the pivot row
+#' @param pivot_column integer, the pivot column
 #'
 #' @return new Simplex tableau
 #' @export
@@ -127,10 +125,10 @@ pivot <- function(t, pivot_row, pivot_column){
 
 #' simplex
 #'
-#' @param A a matrix (coefficient matrix)
-#' @param b a vector, RHS
-#' @param c a vector, objective function coefficients
-#' @param sense max = 1
+#' @param A matrix, the coefficient matrix of the LP
+#' @param b vector, RHS
+#' @param c vector, objective function coefficients
+#' @param sense integer, 1 = max
 #'
 #' @return optimal Simplex tableau or stops execution in case of an unbounded problem
 #' @export

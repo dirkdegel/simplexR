@@ -7,7 +7,7 @@
 get_pivot_column(t)
 }
 \arguments{
-\item{t}{a Simplex tableau}
+\item{t}{matrix, a Simplex tableau}
 }
 \value{
 pivot column

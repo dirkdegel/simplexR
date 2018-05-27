@@ -7,9 +7,9 @@
 get_pivot_row(t, pivot_column)
 }
 \arguments{
-\item{t}{a Simplex tableau}
+\item{t}{matrix, a Simplex tableau}
 
-\item{pivot_column}{the pivot column}
+\item{pivot_column}{integer, the pivot column}
 }
 \value{
 pivot row

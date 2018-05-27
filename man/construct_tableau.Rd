@@ -7,16 +7,16 @@
 construct_tableau(A, b, c, sense)
 }
 \arguments{
-\item{A}{a matrix, the coefficient matrix of the LP}
+\item{A}{matrix, the coefficient matrix of the LP}
 
-\item{b}{a vector, RHS}
+\item{b}{vector, RHS}
 
-\item{c}{a vector, objective function coefficients}
+\item{c}{vector, objective function coefficients}
 
-\item{sense}{max = 1}
+\item{sense}{integer, 1 = max}
 }
 \value{
-a matrix that represents the initial Simplax tableau
+A matrix that represents the initial Simplax tableau
 }
 \description{
 Constrcut an initial Simplex tableau of the linear program in canonical form for given A, b, c, sense (max = 1)

@@ -7,13 +7,13 @@
 simplex(A, b, c, sense)
 }
 \arguments{
-\item{A}{a matrix (coefficient matrix)}
+\item{A}{matrix, the coefficient matrix of the LP}
 
-\item{b}{a vector, RHS}
+\item{b}{vector, RHS}
 
-\item{c}{a vector, objective function coefficients}
+\item{c}{vector, objective function coefficients}
 
-\item{sense}{max = 1}
+\item{sense}{integer, 1 = max}
 }
 \value{
 optimal Simplex tableau or stops execution in case of an unbounded problem

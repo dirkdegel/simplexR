@@ -7,11 +7,11 @@
 pivot(t, pivot_row, pivot_column)
 }
 \arguments{
-\item{t}{a Simplex tableau}
+\item{t}{matrix, a Simplex tableau}
 
-\item{pivot_row}{the pivot row}
+\item{pivot_row}{integer, the pivot row}
 
-\item{pivot_column}{the pivot column}
+\item{pivot_column}{integer, the pivot column}
 }
 \value{
 new Simplex tableau
