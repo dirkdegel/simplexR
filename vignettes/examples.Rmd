@@ -5,6 +5,7 @@ title: "Examples --- Canonical Form of LP"
 ```{r message = FALSE, warning = FALSE, includet = FALSE}
 
 library(simplexR)
+library(gMOIP) # for visualisations
 
 ```
 
@@ -41,6 +42,14 @@ simplexR(A, b, c, sense)
 
 ```
 
+```{r}
+
+# visualisation
+gMOIP::plotPolytope(A = A, b = b, obj = c, crit = "max", plotOptimum = TRUE, labels = "coord")
+
+```
+
+
 ## Standard Case---Exponential Time Complexity 
 
 $$
@@ -66,6 +75,13 @@ b <- c(5, 25)
 c <- c(2, 1)
 
 simplexR(A, b, c)
+
+```
+
+```{r}
+
+# visualisation
+gMOIP::plotPolytope(A = A, b = b, obj = c, crit = "max", plotOptimum = TRUE, labels = "coord")
 
 ```
 
@@ -97,6 +113,13 @@ c <- c(-2, 3)
 sense <- 1
 
 simplexR(A, b, c, sense)
+
+```
+
+```{r}
+
+# visualisation is a bit wrong!
+gMOIP::plotPolytope(A = A, b = b, obj = c, crit = "max", plotOptimum = TRUE, labels = "coord")
 
 ```
 
@@ -164,6 +187,13 @@ simplexR(A, b, c, sense)
 
 ```
 
+```{r}
+
+# visualisation
+gMOIP::plotPolytope(A = A, b = b, obj = c, crit = "max", plotOptimum = TRUE, labels = "coord")
+
+```
+
 ## Primal Degeneracy
 
 --- Werners, Brigitte - Grundlagen des Operations Research (p. 65)
@@ -196,5 +226,12 @@ c <- c(3, 2)
 sense <- 1
 
 simplexR(A, b, c, sense)
+
+```
+
+```{r}
+
+# visualisation
+gMOIP::plotPolytope(A = A, b = b, obj = c, crit = "max", plotOptimum = TRUE, labels = "coord")
 
 ```

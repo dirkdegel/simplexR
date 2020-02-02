@@ -7,7 +7,7 @@
 get_pivot_row(t, pivot_column)
 }
 \arguments{
-\item{t}{\code{matrix}, a Simplex Tableau}
+\item{t}{\code{matrix}, a simplex tableau}
 
 \item{pivot_column}{\code{scalar}, index of the pivot column}
 }

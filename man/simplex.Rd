@@ -7,12 +7,12 @@
 simplex(tableau, max_iter = 100)
 }
 \arguments{
-\item{tableau}{\code{matrix}, Simplex Tableau in canonical form}
+\item{tableau}{\code{matrix}, simplex tableau in canonical form}
 
 \item{max_iter}{\code{scalar}, maximum number of iterations}
 }
 \value{
-optimal Simplex Tableau or stops execution in case of an unbounded problem
+optimal simplex tableau or stops execution in case of an unbounded problem
 }
 \description{
 simplex

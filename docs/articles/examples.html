@@ -60,6 +60,9 @@
       <a href="../articles/examples.html">Examples --- Canonical Form of LP</a>
     </li>
     <li>
+      <a href="../articles/functions.html">Provided Functions</a>
+    </li>
+    <li>
       <a href="../articles/linear_programming.html">Linear Programming</a>
     </li>
     <li>
@@ -101,7 +104,8 @@
 
     
     
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(simplexR)</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(simplexR)</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(gMOIP) <span class="co"># for visualisations</span></a></code></pre></div>
 <div id="standard-case" class="section level2">
 <h2 class="hasAnchor">
 <a href="#standard-case" class="anchor"></a>Standard Case</h2>
@@ -173,6 +177,9 @@ s.t.  &amp; 2x_1 &amp; + &amp; 1x_2 &amp; \leq &amp; 22 \\
 ## [1] "----------------------------------------------"
 ## [1] "Status: End"
 ## [1] "----------------------------------------------"</code></pre>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="co"># visualisation</span></a>
+<a class="sourceLine" id="cb4-2" data-line-number="2">gMOIP<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/gMOIP/man/plotPolytope.html">plotPolytope</a></span>(<span class="dt">A =</span> A, <span class="dt">b =</span> b, <span class="dt">obj =</span> c, <span class="dt">crit =</span> <span class="st">"max"</span>, <span class="dt">plotOptimum =</span> <span class="ot">TRUE</span>, <span class="dt">labels =</span> <span class="st">"coord"</span>)</a></code></pre></div>
+<p><img src="examples_files/figure-html/unnamed-chunk-3-1.png" width="700"></p>
 </div>
 <div id="standard-caseexponential-time-complexity" class="section level2">
 <h2 class="hasAnchor">
@@ -185,18 +192,18 @@ s.t.  &amp; 1x_1 &amp;   &amp;      &amp; \leq &amp;  5 \\
       &amp;  x_1,&amp;   &amp;  x_2 &amp; \geq &amp; 0
 \end{array}
 \]</span></p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="co"># standard case</span></a>
-<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="co"># optimal solution: x = (0, 25), z = 25</span></a>
-<a class="sourceLine" id="cb4-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb4-4" data-line-number="4">A &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(</a>
-<a class="sourceLine" id="cb4-5" data-line-number="5">  <span class="dv">1</span>, <span class="dv">0</span>,</a>
-<a class="sourceLine" id="cb4-6" data-line-number="6">  <span class="dv">4</span>, <span class="dv">1</span></a>
-<a class="sourceLine" id="cb4-7" data-line-number="7">), <span class="dt">nrow =</span> <span class="dv">2</span>, <span class="dt">ncol =</span> <span class="dv">2</span>, <span class="dt">byrow =</span> <span class="ot">TRUE</span>, <span class="dt">dimnames =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"R1"</span>, <span class="st">"R2"</span>), <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"x1"</span>, <span class="st">"x2"</span>)))</a>
-<a class="sourceLine" id="cb4-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb4-9" data-line-number="9">b &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">5</span>, <span class="dv">25</span>)</a>
-<a class="sourceLine" id="cb4-10" data-line-number="10">c &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">2</span>, <span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb4-11" data-line-number="11"></a>
-<a class="sourceLine" id="cb4-12" data-line-number="12"><span class="kw"><a href="../reference/simplexR.html">simplexR</a></span>(A, b, c)</a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="co"># standard case</span></a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="co"># optimal solution: x = (0, 25), z = 25</span></a>
+<a class="sourceLine" id="cb5-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb5-4" data-line-number="4">A &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(</a>
+<a class="sourceLine" id="cb5-5" data-line-number="5">  <span class="dv">1</span>, <span class="dv">0</span>,</a>
+<a class="sourceLine" id="cb5-6" data-line-number="6">  <span class="dv">4</span>, <span class="dv">1</span></a>
+<a class="sourceLine" id="cb5-7" data-line-number="7">), <span class="dt">nrow =</span> <span class="dv">2</span>, <span class="dt">ncol =</span> <span class="dv">2</span>, <span class="dt">byrow =</span> <span class="ot">TRUE</span>, <span class="dt">dimnames =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"R1"</span>, <span class="st">"R2"</span>), <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"x1"</span>, <span class="st">"x2"</span>)))</a>
+<a class="sourceLine" id="cb5-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb5-9" data-line-number="9">b &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">5</span>, <span class="dv">25</span>)</a>
+<a class="sourceLine" id="cb5-10" data-line-number="10">c &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">2</span>, <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb5-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb5-12" data-line-number="12"><span class="kw"><a href="../reference/simplexR.html">simplexR</a></span>(A, b, c)</a></code></pre></div>
 <pre><code>## [1] "Start constructing Simplex Tableau"
 ## [1] "Tableau constructed"
 ## [1] "Initial Tableau (Tableau 0)"
@@ -237,6 +244,9 @@ s.t.  &amp; 1x_1 &amp;   &amp;      &amp; \leq &amp;  5 \\
 ## [1] "----------------------------------------------"
 ## [1] "Status: End"
 ## [1] "----------------------------------------------"</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="co"># visualisation</span></a>
+<a class="sourceLine" id="cb7-2" data-line-number="2">gMOIP<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/gMOIP/man/plotPolytope.html">plotPolytope</a></span>(<span class="dt">A =</span> A, <span class="dt">b =</span> b, <span class="dt">obj =</span> c, <span class="dt">crit =</span> <span class="st">"max"</span>, <span class="dt">plotOptimum =</span> <span class="ot">TRUE</span>, <span class="dt">labels =</span> <span class="st">"coord"</span>)</a></code></pre></div>
+<p><img src="examples_files/figure-html/unnamed-chunk-5-1.png" width="700"></p>
 </div>
 <div id="unbounded-feasible-region-optimal-solution" class="section level2">
 <h2 class="hasAnchor">
@@ -250,20 +260,20 @@ s.t.  &amp;-1x_1 &amp; + &amp; 1x_2 &amp; \leq &amp; 2 \\
       &amp;  x_1,&amp;  &amp;  x_2 &amp; \geq &amp; 0
 \end{array}
 \]</span></p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="co"># unbounded feasible region, optimal solution exists</span></a>
-<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="co"># optimal solution: x = (2, 4), z = 8</span></a>
-<a class="sourceLine" id="cb6-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb6-4" data-line-number="4">A &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(</a>
-<a class="sourceLine" id="cb6-5" data-line-number="5">  <span class="dv">-1</span>, <span class="dv">1</span>,</a>
-<a class="sourceLine" id="cb6-6" data-line-number="6">  <span class="dv">-1</span>, <span class="dv">2</span>,</a>
-<a class="sourceLine" id="cb6-7" data-line-number="7">  <span class="dv">0</span>, <span class="dv">1</span></a>
-<a class="sourceLine" id="cb6-8" data-line-number="8">), <span class="dt">nrow =</span> <span class="dv">3</span>, <span class="dt">ncol =</span> <span class="dv">2</span>, <span class="dt">byrow =</span> <span class="ot">TRUE</span>, <span class="dt">dimnames =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"R1"</span>, <span class="st">"R2"</span>, <span class="st">"R3"</span>), <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"x1"</span>, <span class="st">"x2"</span>)))</a>
-<a class="sourceLine" id="cb6-9" data-line-number="9"></a>
-<a class="sourceLine" id="cb6-10" data-line-number="10">b &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">2</span>, <span class="dv">6</span>, <span class="dv">5</span>)</a>
-<a class="sourceLine" id="cb6-11" data-line-number="11">c &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="op">-</span><span class="dv">2</span>, <span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb6-12" data-line-number="12">sense &lt;-<span class="st"> </span><span class="dv">1</span></a>
-<a class="sourceLine" id="cb6-13" data-line-number="13"></a>
-<a class="sourceLine" id="cb6-14" data-line-number="14"><span class="kw"><a href="../reference/simplexR.html">simplexR</a></span>(A, b, c, sense)</a></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="co"># unbounded feasible region, optimal solution exists</span></a>
+<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="co"># optimal solution: x = (2, 4), z = 8</span></a>
+<a class="sourceLine" id="cb8-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb8-4" data-line-number="4">A &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(</a>
+<a class="sourceLine" id="cb8-5" data-line-number="5">  <span class="dv">-1</span>, <span class="dv">1</span>,</a>
+<a class="sourceLine" id="cb8-6" data-line-number="6">  <span class="dv">-1</span>, <span class="dv">2</span>,</a>
+<a class="sourceLine" id="cb8-7" data-line-number="7">  <span class="dv">0</span>, <span class="dv">1</span></a>
+<a class="sourceLine" id="cb8-8" data-line-number="8">), <span class="dt">nrow =</span> <span class="dv">3</span>, <span class="dt">ncol =</span> <span class="dv">2</span>, <span class="dt">byrow =</span> <span class="ot">TRUE</span>, <span class="dt">dimnames =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"R1"</span>, <span class="st">"R2"</span>, <span class="st">"R3"</span>), <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"x1"</span>, <span class="st">"x2"</span>)))</a>
+<a class="sourceLine" id="cb8-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb8-10" data-line-number="10">b &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">2</span>, <span class="dv">6</span>, <span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb8-11" data-line-number="11">c &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="op">-</span><span class="dv">2</span>, <span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb8-12" data-line-number="12">sense &lt;-<span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb8-13" data-line-number="13"></a>
+<a class="sourceLine" id="cb8-14" data-line-number="14"><span class="kw"><a href="../reference/simplexR.html">simplexR</a></span>(A, b, c, sense)</a></code></pre></div>
 <pre><code>## [1] "Start constructing Simplex Tableau"
 ## [1] "Tableau constructed"
 ## [1] "Initial Tableau (Tableau 0)"
@@ -297,6 +307,9 @@ s.t.  &amp;-1x_1 &amp; + &amp; 1x_2 &amp; \leq &amp; 2 \\
 ## [1] "----------------------------------------------"
 ## [1] "Status: End"
 ## [1] "----------------------------------------------"</code></pre>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="co"># visualisation is a bit wrong!</span></a>
+<a class="sourceLine" id="cb10-2" data-line-number="2">gMOIP<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/gMOIP/man/plotPolytope.html">plotPolytope</a></span>(<span class="dt">A =</span> A, <span class="dt">b =</span> b, <span class="dt">obj =</span> c, <span class="dt">crit =</span> <span class="st">"max"</span>, <span class="dt">plotOptimum =</span> <span class="ot">TRUE</span>, <span class="dt">labels =</span> <span class="st">"coord"</span>)</a></code></pre></div>
+<p><img src="examples_files/figure-html/unnamed-chunk-7-1.png" width="700"></p>
 </div>
 <div id="unbounded-feasible-region-no-optimal-solution" class="section level2">
 <h2 class="hasAnchor">
@@ -310,18 +323,18 @@ s.t.  &amp;-2x_1 &amp; + &amp; 3x_2 &amp; \leq &amp; 12 \\
       &amp;  x_1,&amp;  &amp;  x_2 &amp; \geq &amp; 0
 \end{array}
 \]</span></p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="co"># unbounded feasible region, no optimal solution exists</span></a>
-<a class="sourceLine" id="cb8-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb8-3" data-line-number="3">A &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(</a>
-<a class="sourceLine" id="cb8-4" data-line-number="4">  <span class="dv">-2</span>, <span class="dv">3</span>,</a>
-<a class="sourceLine" id="cb8-5" data-line-number="5">  <span class="dv">-1</span>, <span class="dv">3</span></a>
-<a class="sourceLine" id="cb8-6" data-line-number="6">), <span class="dt">nrow =</span> <span class="dv">2</span>, <span class="dt">ncol =</span> <span class="dv">2</span>, <span class="dt">byrow =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb8-7" data-line-number="7"></a>
-<a class="sourceLine" id="cb8-8" data-line-number="8">b &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">12</span>, <span class="dv">18</span>)</a>
-<a class="sourceLine" id="cb8-9" data-line-number="9">c &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">2</span>, <span class="dv">4</span>)</a>
-<a class="sourceLine" id="cb8-10" data-line-number="10">sense &lt;-<span class="st"> </span><span class="dv">1</span></a>
-<a class="sourceLine" id="cb8-11" data-line-number="11"></a>
-<a class="sourceLine" id="cb8-12" data-line-number="12"><span class="kw"><a href="../reference/simplexR.html">simplexR</a></span>(A, b, c, sense)</a></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="co"># unbounded feasible region, no optimal solution exists</span></a>
+<a class="sourceLine" id="cb11-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb11-3" data-line-number="3">A &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(</a>
+<a class="sourceLine" id="cb11-4" data-line-number="4">  <span class="dv">-2</span>, <span class="dv">3</span>,</a>
+<a class="sourceLine" id="cb11-5" data-line-number="5">  <span class="dv">-1</span>, <span class="dv">3</span></a>
+<a class="sourceLine" id="cb11-6" data-line-number="6">), <span class="dt">nrow =</span> <span class="dv">2</span>, <span class="dt">ncol =</span> <span class="dv">2</span>, <span class="dt">byrow =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb11-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb11-8" data-line-number="8">b &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">12</span>, <span class="dv">18</span>)</a>
+<a class="sourceLine" id="cb11-9" data-line-number="9">c &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">2</span>, <span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb11-10" data-line-number="10">sense &lt;-<span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb11-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb11-12" data-line-number="12"><span class="kw"><a href="../reference/simplexR.html">simplexR</a></span>(A, b, c, sense)</a></code></pre></div>
 <pre><code>## [1] "Start constructing Simplex Tableau"
 ## [1] "Tableau constructed"
 ## [1] "Initial Tableau (Tableau 0)"
@@ -371,21 +384,21 @@ s.t.  &amp; 2x_1 &amp; + &amp; 1x_2 &amp; \leq &amp; 22 \\
       &amp;  x_1,&amp;  &amp;  x_2 &amp; \geq &amp; 0
 \end{array}
 \]</span></p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="co"># dual degeneracy</span></a>
-<a class="sourceLine" id="cb10-2" data-line-number="2"><span class="co"># optimal solution: x = (9, 4), z = 33</span></a>
-<a class="sourceLine" id="cb10-3" data-line-number="3"><span class="co"># optimal solution: x = (7, 8), z = 33</span></a>
-<a class="sourceLine" id="cb10-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb10-5" data-line-number="5">A &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(</a>
-<a class="sourceLine" id="cb10-6" data-line-number="6">  <span class="dv">2</span>, <span class="dv">1</span>,</a>
-<a class="sourceLine" id="cb10-7" data-line-number="7">  <span class="dv">1</span>, <span class="dv">2</span>,</a>
-<a class="sourceLine" id="cb10-8" data-line-number="8">  <span class="dv">4</span>, <span class="dv">1</span></a>
-<a class="sourceLine" id="cb10-9" data-line-number="9">), <span class="dt">nrow =</span> <span class="dv">3</span>, <span class="dt">ncol =</span> <span class="dv">2</span>, <span class="dt">byrow =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb10-10" data-line-number="10"></a>
-<a class="sourceLine" id="cb10-11" data-line-number="11">b &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">22</span>, <span class="dv">23</span>, <span class="dv">40</span>)</a>
-<a class="sourceLine" id="cb10-12" data-line-number="12">c &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">3</span>, <span class="fl">1.5</span>)</a>
-<a class="sourceLine" id="cb10-13" data-line-number="13">sense &lt;-<span class="st"> </span><span class="dv">1</span></a>
-<a class="sourceLine" id="cb10-14" data-line-number="14"></a>
-<a class="sourceLine" id="cb10-15" data-line-number="15"><span class="kw"><a href="../reference/simplexR.html">simplexR</a></span>(A, b, c, sense)</a></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="co"># dual degeneracy</span></a>
+<a class="sourceLine" id="cb13-2" data-line-number="2"><span class="co"># optimal solution: x = (9, 4), z = 33</span></a>
+<a class="sourceLine" id="cb13-3" data-line-number="3"><span class="co"># optimal solution: x = (7, 8), z = 33</span></a>
+<a class="sourceLine" id="cb13-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb13-5" data-line-number="5">A &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(</a>
+<a class="sourceLine" id="cb13-6" data-line-number="6">  <span class="dv">2</span>, <span class="dv">1</span>,</a>
+<a class="sourceLine" id="cb13-7" data-line-number="7">  <span class="dv">1</span>, <span class="dv">2</span>,</a>
+<a class="sourceLine" id="cb13-8" data-line-number="8">  <span class="dv">4</span>, <span class="dv">1</span></a>
+<a class="sourceLine" id="cb13-9" data-line-number="9">), <span class="dt">nrow =</span> <span class="dv">3</span>, <span class="dt">ncol =</span> <span class="dv">2</span>, <span class="dt">byrow =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb13-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb13-11" data-line-number="11">b &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">22</span>, <span class="dv">23</span>, <span class="dv">40</span>)</a>
+<a class="sourceLine" id="cb13-12" data-line-number="12">c &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">3</span>, <span class="fl">1.5</span>)</a>
+<a class="sourceLine" id="cb13-13" data-line-number="13">sense &lt;-<span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb13-14" data-line-number="14"></a>
+<a class="sourceLine" id="cb13-15" data-line-number="15"><span class="kw"><a href="../reference/simplexR.html">simplexR</a></span>(A, b, c, sense)</a></code></pre></div>
 <pre><code>## [1] "Start constructing Simplex Tableau"
 ## [1] "Tableau constructed"
 ## [1] "Initial Tableau (Tableau 0)"
@@ -419,6 +432,9 @@ s.t.  &amp; 2x_1 &amp; + &amp; 1x_2 &amp; \leq &amp; 22 \\
 ## [1] "----------------------------------------------"
 ## [1] "Status: End"
 ## [1] "----------------------------------------------"</code></pre>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="co"># visualisation</span></a>
+<a class="sourceLine" id="cb15-2" data-line-number="2">gMOIP<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/gMOIP/man/plotPolytope.html">plotPolytope</a></span>(<span class="dt">A =</span> A, <span class="dt">b =</span> b, <span class="dt">obj =</span> c, <span class="dt">crit =</span> <span class="st">"max"</span>, <span class="dt">plotOptimum =</span> <span class="ot">TRUE</span>, <span class="dt">labels =</span> <span class="st">"coord"</span>)</a></code></pre></div>
+<p><img src="examples_files/figure-html/unnamed-chunk-10-1.png" width="700"></p>
 </div>
 <div id="primal-degeneracy" class="section level2">
 <h2 class="hasAnchor">
@@ -434,21 +450,21 @@ s.t.  &amp; 2x_1 &amp; + &amp; 1x_2 &amp; \leq &amp; 22 \\
       &amp;  x_1,&amp;  &amp;  x_2 &amp; \geq &amp; 0
 \end{array}
 \]</span></p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="co"># primal degeneracy</span></a>
-<a class="sourceLine" id="cb12-2" data-line-number="2"><span class="co"># optimal solution: x = (7, 8), z = 37</span></a>
-<a class="sourceLine" id="cb12-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb12-4" data-line-number="4">A &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(</a>
-<a class="sourceLine" id="cb12-5" data-line-number="5">  <span class="dv">2</span>, <span class="dv">1</span>,</a>
-<a class="sourceLine" id="cb12-6" data-line-number="6">  <span class="dv">1</span>, <span class="dv">2</span>,</a>
-<a class="sourceLine" id="cb12-7" data-line-number="7">  <span class="dv">4</span>, <span class="dv">1</span>,</a>
-<a class="sourceLine" id="cb12-8" data-line-number="8">  <span class="dv">2</span>, <span class="dv">3</span> <span class="op">/</span><span class="st"> </span><span class="dv">4</span></a>
-<a class="sourceLine" id="cb12-9" data-line-number="9">), <span class="dt">nrow =</span> <span class="dv">4</span>, <span class="dt">ncol =</span> <span class="dv">2</span>, <span class="dt">byrow =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb12-10" data-line-number="10"></a>
-<a class="sourceLine" id="cb12-11" data-line-number="11">b &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">22</span>, <span class="dv">23</span>, <span class="dv">40</span>, <span class="dv">21</span>)</a>
-<a class="sourceLine" id="cb12-12" data-line-number="12">c &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">3</span>, <span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb12-13" data-line-number="13">sense &lt;-<span class="st"> </span><span class="dv">1</span></a>
-<a class="sourceLine" id="cb12-14" data-line-number="14"></a>
-<a class="sourceLine" id="cb12-15" data-line-number="15"><span class="kw"><a href="../reference/simplexR.html">simplexR</a></span>(A, b, c, sense)</a></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="co"># primal degeneracy</span></a>
+<a class="sourceLine" id="cb16-2" data-line-number="2"><span class="co"># optimal solution: x = (7, 8), z = 37</span></a>
+<a class="sourceLine" id="cb16-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb16-4" data-line-number="4">A &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(</a>
+<a class="sourceLine" id="cb16-5" data-line-number="5">  <span class="dv">2</span>, <span class="dv">1</span>,</a>
+<a class="sourceLine" id="cb16-6" data-line-number="6">  <span class="dv">1</span>, <span class="dv">2</span>,</a>
+<a class="sourceLine" id="cb16-7" data-line-number="7">  <span class="dv">4</span>, <span class="dv">1</span>,</a>
+<a class="sourceLine" id="cb16-8" data-line-number="8">  <span class="dv">2</span>, <span class="dv">3</span> <span class="op">/</span><span class="st"> </span><span class="dv">4</span></a>
+<a class="sourceLine" id="cb16-9" data-line-number="9">), <span class="dt">nrow =</span> <span class="dv">4</span>, <span class="dt">ncol =</span> <span class="dv">2</span>, <span class="dt">byrow =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb16-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb16-11" data-line-number="11">b &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">22</span>, <span class="dv">23</span>, <span class="dv">40</span>, <span class="dv">21</span>)</a>
+<a class="sourceLine" id="cb16-12" data-line-number="12">c &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">3</span>, <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb16-13" data-line-number="13">sense &lt;-<span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb16-14" data-line-number="14"></a>
+<a class="sourceLine" id="cb16-15" data-line-number="15"><span class="kw"><a href="../reference/simplexR.html">simplexR</a></span>(A, b, c, sense)</a></code></pre></div>
 <pre><code>## [1] "Start constructing Simplex Tableau"
 ## [1] "Tableau constructed"
 ## [1] "Initial Tableau (Tableau 0)"
@@ -497,6 +513,9 @@ s.t.  &amp; 2x_1 &amp; + &amp; 1x_2 &amp; \leq &amp; 22 \\
 ## [1] "----------------------------------------------"
 ## [1] "Status: End"
 ## [1] "----------------------------------------------"</code></pre>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1"><span class="co"># visualisation</span></a>
+<a class="sourceLine" id="cb18-2" data-line-number="2">gMOIP<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/gMOIP/man/plotPolytope.html">plotPolytope</a></span>(<span class="dt">A =</span> A, <span class="dt">b =</span> b, <span class="dt">obj =</span> c, <span class="dt">crit =</span> <span class="st">"max"</span>, <span class="dt">plotOptimum =</span> <span class="ot">TRUE</span>, <span class="dt">labels =</span> <span class="st">"coord"</span>)</a></code></pre></div>
+<p><img src="examples_files/figure-html/unnamed-chunk-12-1.png" width="700"></p>
 </div>
   </div>
 

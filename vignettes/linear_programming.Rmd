@@ -4,8 +4,29 @@ title: "Linear Programming"
 
 ## Introduction
 
-Seien $c=(c_1,\ldots,c_n)^T \in \mathbf{R}^n, A={(a_{ij})}_{{i=1,\ldots,m \atop j=1,\ldots,n}} \in \mathbf{R}^{m\times n}$ und $b=(b_1,\ldots,b_m)^T \in \mathbf{R}^m$ gegeben. Ein Optimierungsproblem der Form 
+Linear programming (linear optimization) is a method to achieve the best outcome (such as maximum profit or lowest cost) in a mathematical model whose requirements are represented by linear relationships. Linear programming is a special case of mathematical programming (mathematical optimization).
+
+More formally, linear programming is a technique for the optimization of a linear objective function, subject to linear equality and linear inequality constraints. Its feasible region is a convex polytope, which is a set defined as the intersection of finitely many half spaces, each of which is defined by a linear inequality. Its objective function is a real-valued affine (linear) function defined on this polyhedron. A linear programming algorithm finds a point in the polyhedron where this function has the largest (or smallest) value if such a point exists.
+
+## Canonical Form of a Linear Program
+
+Let $A \in \mathbb{R}^{m \times n}, b = (b_1,\ldots,b_m)^\intercal \in \mathbb{R}^{m}, b \geq 0$ and $c = (c_1,\ldots,c_n)^\intercal \in \mathbb{R}^{n}$ be a given matrix respectively coefficient vectors. A **linear program** (*LP*) in **canonical form** is defined as:
 $$
-\begin{equation} \max\{c^T x \mid Ax\leq b, x\geq 0 \} \end{equation}
+\max\{ c^\intercal x \mid Ax \leq b, x \geq 0 \}.  
 $$
-mit den Entscheidungsvariablen $x=(x_1,\ldots,x_n)^T \in \mathbf{R}^n$ wird als lineares Programm (LP) in kanonischer Form bezeichnet. Die Funktion $z\colon \mathbf{R}^n \to \mathbf{R}$ mit $z(x) := c^T x$ wird als Zielfunktion, die Menge $X = \{x \in \mathbf{R}^n \mid Ax\leq b, x\geq 0 \}$ als Zulässigkeitsbereich und ein Element $x\in X$ als zulässige Lösung bezeichnet. Existiert ein $x^\star \in X$ mit $x^\star=\arg\max_{x\in X} z(x)$, dann wird $x^\star$ als optimale Lösung und $z^\star := \max_{x\in X} z(x)$ als optimaler Zielfunktionswert bezeichnet.
+$x = (x_1,\ldots,x_n)^\intercal$ (*decison*) *variables*, the set $\mathcal{F} = \{x \in \mathbb{R}^{n} \mid Ax \leq b, x \geq 0 \}$ *feasible region*, $z\colon \mathbb{R}^{n} \to \mathbb{R}$ with $z(x) = c^\intercal x$ *objective function*, $x \in \mathcal{F}$ *feasible solution*, $x^\star \in \mathcal{F}$ with $c^\intercal x^\star \geq c^\intercal x$ for all $x \in \mathcal{F}$ *optimal solution*, $c^\intercal x^\star$ *optimal objective value*
+
+
+In order to use the Simplex algorithm to solve a linear program the so called standard form is very useful.
+
+## Standard Form a Linear Program
+
+Let $A \in \mathbb{R}^{m \times n}, b \in \mathbb{R}^{m}, b \geq 0$ and $c \in \mathbb{R}^{n}$ be a given matrix respectively vectors. 
+A **linear program** in **standard form** is defined as:
+$$
+\max\{ c^\intercal x \mid Ax = b, x \geq 0 \}.  
+$$
+
+
+
+

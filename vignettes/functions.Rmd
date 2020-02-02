@@ -1,0 +1,90 @@
+---
+title: "Provided Functions"
+---
+
+```R
+optimality_check <- function(t) {
+  if (min(t[nrow(t), 1:(ncol(t) - 1)]) < 0) {
+    return(FALSE) # not optimal
+  }
+  else {
+    return(TRUE) # optimal
+  }
+}
+```
+
+```R
+get_pivot_column <- function(t) { # pricing
+  return(which.min(t[nrow(t), 1:(ncol(t) - 1)]))
+}
+```
+
+```R
+get_pivot_row <- function(t, pivot_column) {
+  lhs <- t[1:(nrow(t) - 1), pivot_column]
+  rhs <- t[1:(nrow(t) - 1), ncol(t)]
+  if (max(lhs) < 0) {
+    print("Problem is unbounded -> stop execution")
+    # break
+    return(-1)
+  }
+  else {
+    theta <- vector(mode = "double", length = (nrow(t) - 1))
+    for (i in 1:(nrow(t) - 1)) {
+      if (lhs[i] > 0) {
+        theta[i] <- rhs[i] / lhs[i]
+      } else {
+        theta[i] <- Inf
+      }
+    }
+    return(which.min(theta))
+  }
+}
+```
+
+```R
+pivot <- function(t, pivot_row, pivot_column) {
+  pivot_elemnt <- t[pivot_row, pivot_column]
+  t[pivot_row, ] <- t[pivot_row, ] / pivot_elemnt
+  for (r in 1:nrow(t)) {
+    if (r != pivot_row) {
+      t[r, ] <- t[r, ] - t[r, pivot_column] * t[pivot_row, ]
+    }
+  }
+  return(t)
+}
+```
+
+```R
+simplex <- function(tableau, max_iter = 100) {
+  print("Initial Tableau (Tableau 0)")
+  print(tableau)
+  iter <- 1
+  while (!optimality_check(tableau) & iter < max_iter) {
+    print("----------------------------------------------")
+    print(paste("Iteration", iter))
+    print("----------------------------------------------")
+    pivot_column <- get_pivot_column(tableau)
+    print(paste("Pivot column:", pivot_column))
+    pivot_row <- get_pivot_row(tableau, pivot_column)
+    if (pivot_row == -1) {
+      break()
+    }
+    print(paste("Pivot row:", pivot_row))
+    tableau <- pivot(tableau, pivot_row, pivot_column)
+    print(paste("New tableau at the end of iteration", iter))
+    print(tableau)
+    iter <- iter + 1
+  }
+  print("----------------------------------------------")
+  print("Status: End")
+  print("----------------------------------------------")
+}
+```
+
+```R
+simplexR <- function(A, b, c, sense = 1, relation = rep("<=", length(b)), max_iter = 100) {
+  tableau <- construct_tableau(A, b, c, sense, relation)
+  simplex(tableau = tableau, max_iter = max_iter)
+}
+```

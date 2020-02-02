@@ -7,7 +7,7 @@
 get_pivot_column_Bland(t)
 }
 \arguments{
-\item{t}{\code{matrix}, a Simplex Tableau}
+\item{t}{\code{matrix}, a simplex tableau}
 }
 \value{
 \code{scalar}, index of the pivot column

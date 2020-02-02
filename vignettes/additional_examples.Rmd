@@ -57,6 +57,7 @@ simplex(tableau = canonical_tableau)
 
 ```
 
+
 ## Primal Degeneracy --- Stalling and Cycling
 
 --- Examples from: Operations Research - Deterministische Modelle und Methoden - Stephan Dempe, Heiner Schreier, 1. Auflage September 2006, Wiesbaden

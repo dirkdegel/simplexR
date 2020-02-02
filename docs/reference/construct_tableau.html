@@ -36,7 +36,7 @@
 
 
 <meta property="og:title" content="construct_tableau — construct_tableau" />
-<meta property="og:description" content="Construct an initial Simplex Tableau of the linear program for given A, b, c, sense (max = 1, min = -1), relation (&quot;&amp;lt;=&quot;, &quot;=&quot;, &quot;=&amp;gt;&quot;)." />
+<meta property="og:description" content="Construct an initial simplex tableau of the linear program for given A, b, c, sense (max = 1, min = -1), relation (&quot;&amp;lt;=&quot;, &quot;=&quot;, &quot;=&amp;gt;&quot;)." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -98,6 +98,9 @@
       <a href="../articles/examples.html">Examples --- Canonical Form of LP</a>
     </li>
     <li>
+      <a href="../articles/functions.html">Provided Functions</a>
+    </li>
+    <li>
       <a href="../articles/linear_programming.html">Linear Programming</a>
     </li>
     <li>
@@ -135,7 +138,7 @@
     </div>
 
     <div class="ref-description">
-    <p>Construct an initial Simplex Tableau of the linear program for given A, b, c, sense (max = 1, min = -1), relation ("&lt;=", "=", "=&gt;").</p>
+    <p>Construct an initial simplex tableau of the linear program for given A, b, c, sense (max = 1, min = -1), relation ("&lt;=", "=", "=&gt;").</p>
     </div>
 
     <pre class="usage"><span class='fu'>construct_tableau</span>(
@@ -160,7 +163,7 @@
     </tr>
     <tr>
       <th>c</th>
-      <td><p><code>vector</code>, objective function coefficients</p></td>
+      <td><p><code>vector</code>, coefficients of the objective function</p></td>
     </tr>
     <tr>
       <th>sense</th>
@@ -178,7 +181,7 @@
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>matrix</code>, initial Simplex Tableau</p>
+    <p><code>matrix</code>, initial simplex tableau</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

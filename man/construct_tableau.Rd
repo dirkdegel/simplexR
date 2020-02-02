@@ -18,7 +18,7 @@ construct_tableau(
 
 \item{b}{\code{vector}, RHS}
 
-\item{c}{\code{vector}, objective function coefficients}
+\item{c}{\code{vector}, coefficients of the objective function}
 
 \item{sense}{\code{scalar}, max = 1, min = -1 (default = 1)}
 
@@ -27,8 +27,8 @@ construct_tableau(
 \item{bigM}{\code{scalar}, M used in bigM-method (default = 1000)}
 }
 \value{
-\code{matrix}, initial Simplex Tableau
+\code{matrix}, initial simplex tableau
 }
 \description{
-Construct an initial Simplex Tableau of the linear program for given A, b, c, sense (max = 1, min = -1), relation ({"<=", "=", "=>"}).
+Construct an initial simplex tableau of the linear program for given A, b, c, sense (max = 1, min = -1), relation ({"<=", "=", "=>"}).
 }

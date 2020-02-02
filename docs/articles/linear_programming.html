@@ -60,6 +60,9 @@
       <a href="../articles/examples.html">Examples --- Canonical Form of LP</a>
     </li>
     <li>
+      <a href="../articles/functions.html">Provided Functions</a>
+    </li>
+    <li>
       <a href="../articles/linear_programming.html">Linear Programming</a>
     </li>
     <li>
@@ -104,9 +107,23 @@
 <div id="introduction" class="section level2">
 <h2 class="hasAnchor">
 <a href="#introduction" class="anchor"></a>Introduction</h2>
-<p>Seien <span class="math inline">\(c=(c_1,\ldots,c_n)^T \in \mathbf{R}^n, A={(a_{ij})}_{{i=1,\ldots,m \atop j=1,\ldots,n}} \in \mathbf{R}^{m\times n}\)</span> und <span class="math inline">\(b=(b_1,\ldots,b_m)^T \in \mathbf{R}^m\)</span> gegeben. Ein Optimierungsproblem der Form <span class="math display">\[
-\begin{equation} \max\{c^T x \mid Ax\leq b, x\geq 0 \} \end{equation}
-\]</span> mit den Entscheidungsvariablen <span class="math inline">\(x=(x_1,\ldots,x_n)^T \in \mathbf{R}^n\)</span> wird als lineares Programm (LP) in kanonischer Form bezeichnet. Die Funktion <span class="math inline">\(z\colon \mathbf{R}^n \to \mathbf{R}\)</span> mit <span class="math inline">\(z(x) := c^T x\)</span> wird als Zielfunktion, die Menge <span class="math inline">\(X = \{x \in \mathbf{R}^n \mid Ax\leq b, x\geq 0 \}\)</span> als Zulässigkeitsbereich und ein Element <span class="math inline">\(x\in X\)</span> als zulässige Lösung bezeichnet. Existiert ein <span class="math inline">\(x^\star \in X\)</span> mit <span class="math inline">\(x^\star=\arg\max_{x\in X} z(x)\)</span>, dann wird <span class="math inline">\(x^\star\)</span> als optimale Lösung und <span class="math inline">\(z^\star := \max_{x\in X} z(x)\)</span> als optimaler Zielfunktionswert bezeichnet.</p>
+<p>Linear programming (linear optimization) is a method to achieve the best outcome (such as maximum profit or lowest cost) in a mathematical model whose requirements are represented by linear relationships. Linear programming is a special case of mathematical programming (mathematical optimization).</p>
+<p>More formally, linear programming is a technique for the optimization of a linear objective function, subject to linear equality and linear inequality constraints. Its feasible region is a convex polytope, which is a set defined as the intersection of finitely many half spaces, each of which is defined by a linear inequality. Its objective function is a real-valued affine (linear) function defined on this polyhedron. A linear programming algorithm finds a point in the polyhedron where this function has the largest (or smallest) value if such a point exists.</p>
+</div>
+<div id="canonical-form-of-a-linear-program" class="section level2">
+<h2 class="hasAnchor">
+<a href="#canonical-form-of-a-linear-program" class="anchor"></a>Canonical Form of a Linear Program</h2>
+<p>Let <span class="math inline">\(A \in \mathbb{R}^{m \times n}, b = (b_1,\ldots,b_m)^\intercal \in \mathbb{R}^{m}, b \geq 0\)</span> and <span class="math inline">\(c = (c_1,\ldots,c_n)^\intercal \in \mathbb{R}^{n}\)</span> be a given matrix respectively coefficient vectors. A <strong>linear program</strong> (<em>LP</em>) in <strong>canonical form</strong> is defined as: <span class="math display">\[
+\max\{ c^\intercal x \mid Ax \leq b, x \geq 0 \}.  
+\]</span> <span class="math inline">\(x = (x_1,\ldots,x_n)^\intercal\)</span> (<em>decison</em>) <em>variables</em>, the set <span class="math inline">\(\mathcal{F} = \{x \in \mathbb{R}^{n} \mid Ax \leq b, x \geq 0 \}\)</span> <em>feasible region</em>, <span class="math inline">\(z\colon \mathbb{R}^{n} \to \mathbb{R}\)</span> with <span class="math inline">\(z(x) = c^\intercal x\)</span> <em>objective function</em>, <span class="math inline">\(x \in \mathcal{F}\)</span> <em>feasible solution</em>, <span class="math inline">\(x^\star \in \mathcal{F}\)</span> with <span class="math inline">\(c^\intercal x^\star \geq c^\intercal x\)</span> for all <span class="math inline">\(x \in \mathcal{F}\)</span> <em>optimal solution</em>, <span class="math inline">\(c^\intercal x^\star\)</span> <em>optimal objective value</em></p>
+<p>In order to use the Simplex algorithm to solve a linear program the so called standard form is very useful.</p>
+</div>
+<div id="standard-form-a-linear-program" class="section level2">
+<h2 class="hasAnchor">
+<a href="#standard-form-a-linear-program" class="anchor"></a>Standard Form a Linear Program</h2>
+<p>Let <span class="math inline">\(A \in \mathbb{R}^{m \times n}, b \in \mathbb{R}^{m}, b \geq 0\)</span> and <span class="math inline">\(c \in \mathbb{R}^{n}\)</span> be a given matrix respectively vectors. A <strong>linear program</strong> in <strong>standard form</strong> is defined as: <span class="math display">\[
+\max\{ c^\intercal x \mid Ax = b, x \geq 0 \}.  
+\]</span></p>
 </div>
   </div>
 
@@ -117,6 +134,8 @@
 <a href="#tocnav" class="anchor"></a>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
 <li><a href="#introduction">Introduction</a></li>
+      <li><a href="#canonical-form-of-a-linear-program">Canonical Form of a Linear Program</a></li>
+      <li><a href="#standard-form-a-linear-program">Standard Form a Linear Program</a></li>
       </ul>
 </div>
       </div>

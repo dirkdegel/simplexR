@@ -4,16 +4,16 @@
 
 #' construct_tableau
 #'
-#' Construct an initial Simplex Tableau of the linear program for given A, b, c, sense (max = 1, min = -1), relation ({"<=", "=", "=>"}).
+#' Construct an initial simplex tableau of the linear program for given A, b, c, sense (max = 1, min = -1), relation ({"<=", "=", "=>"}).
 #'
 #' @param A \code{matrix}, coefficient matrix of the LP
 #' @param b \code{vector}, RHS
-#' @param c \code{vector}, objective function coefficients
+#' @param c \code{vector}, coefficients of the objective function
 #' @param sense \code{scalar}, max = 1, min = -1 (default = 1)
 #' @param relation \code{vector}, {"<=", "=", "=>"} (default = "<=")
 #' @param bigM \code{scalar}, M used in bigM-method (default = 1000)
 #'
-#' @return \code{matrix}, initial Simplex Tableau
+#' @return \code{matrix}, initial simplex tableau
 #' @export
 #'
 construct_tableau <- function(A, b, c, sense = 1, relation = rep("<=", length(b)), bigM = 1000) {
@@ -111,9 +111,9 @@ construct_tableau <- function(A, b, c, sense = 1, relation = rep("<=", length(b)
 
 #' optimality_check
 #'
-#' @param t \code{matrix}, a Simplex Tableau
+#' @param t \code{matrix}, a simplex tableau
 #'
-#' @return \code{logical}, (TRUE = optimal, FALSE = not optimal)
+#' @return \code{logical}, TRUE = tableau is optimal, FALSE = tableau is not optimal)
 #' @export
 #'
 optimality_check <- function(t) {
@@ -133,7 +133,7 @@ optimality_check <- function(t) {
 #'
 #' Choose the first nonbasic column with the lowest negative (reduced) cost.
 #'
-#' @param t \code{matrix}, a Simplex Tableau
+#' @param t \code{matrix}, a simplex tableau
 #'
 #' @return \code{scalar}, index of the pivot column
 #' @export
@@ -148,7 +148,7 @@ get_pivot_column <- function(t) { # pricing
 #'
 #' Choose the lowest-numbered (i.e., leftmost) nonbasic column with a negative (reduced) cost.
 #'
-#' @param t \code{matrix}, a Simplex Tableau
+#' @param t \code{matrix}, a simplex tableau
 #'
 #' @return \code{scalar}, index of the pivot column
 #' @export
@@ -163,7 +163,7 @@ get_pivot_column_Bland <- function(t) { # pricing
 
 #' get_pivot_row
 #'
-#' @param t \code{matrix}, a Simplex Tableau
+#' @param t \code{matrix}, a simplex tableau
 #' @param pivot_column \code{scalar}, index of the pivot column
 #'
 #' @return \code{scalar}, index of the pivot row
@@ -196,11 +196,13 @@ get_pivot_row <- function(t, pivot_column) {
 
 #' pivot
 #'
-#' @param t \code{matrix}, a Simplex Tableau
+#' Performs a pivot operation an a given simplex tableau
+#'
+#' @param t \code{matrix}, a simplex tableau
 #' @param pivot_row \code{scalar}, index of the pivot column
 #' @param pivot_column \code{scalar}, index of the pivot row
 #'
-#' @return \code{matrix}, new Simplex Tableau
+#' @return \code{matrix}, new simplex tableau
 #' @export
 #'
 pivot <- function(t, pivot_row, pivot_column) {
@@ -220,10 +222,10 @@ pivot <- function(t, pivot_row, pivot_column) {
 
 #' simplex
 #'
-#' @param tableau \code{matrix}, Simplex Tableau in canonical form
+#' @param tableau \code{matrix}, simplex tableau in canonical form
 #' @param max_iter \code{scalar}, maximum number of iterations
 #'
-#' @return optimal Simplex Tableau or stops execution in case of an unbounded problem
+#' @return optimal simplex tableau or stops execution in case of an unbounded problem
 #' @export
 #'
 simplex <- function(tableau, max_iter = 100) {
@@ -261,7 +263,7 @@ simplex <- function(tableau, max_iter = 100) {
 #'
 #' @param A \code{matrix}, coefficient matrix of the LP
 #' @param b \code{vector}, RHS
-#' @param c \code{vector}, objective function coefficients
+#' @param c \code{vector}, coefficients of the objective function
 #' @param sense \code{scalar}, max = 1, min = -1 (default = 1)
 #' @param relation \code{vector}, {"<=", "=", "=>"} (default = "<=")
 #' @param max_iter \code{scalar}, maximum number of iterations (default = 100)

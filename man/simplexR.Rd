@@ -11,7 +11,7 @@ simplexR(A, b, c, sense = 1, relation = rep("<=", length(b)), max_iter = 100)
 
 \item{b}{\code{vector}, RHS}
 
-\item{c}{\code{vector}, objective function coefficients}
+\item{c}{\code{vector}, coefficients of the objective function}
 
 \item{sense}{\code{scalar}, max = 1, min = -1 (default = 1)}
 
