@@ -1,9 +1,9 @@
-pandoc: 1.19.2.1
-pkgdown: 1.0.0.9000
-pkgdown_sha: fba7dfcccbb3dc91ee4db4bf99a9519f9731febf
+pandoc: 2.3.1
+pkgdown: 1.4.1
+pkgdown_sha: ~
 articles:
+  additional_examples: additional_examples.html
+  examples: examples.html
   linear_programming: linear_programming.html
-urls:
-  reference: https://dirkdegel.github.io/simplexR/reference
-  article: https://dirkdegel.github.io/simplexR/articles
+  simplex_algorithm: simplex_algorithm.html
 

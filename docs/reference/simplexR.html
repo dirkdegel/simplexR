@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • simplexR</title>
+<title>simplexR — simplexR • simplexR</title>
 
 
 <!-- jquery -->
@@ -35,7 +35,9 @@
 
 
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="simplexR — simplexR" />
+<meta property="og:description" content="Solves (find an optimal solution or reports that the problem is not solveable) a generic linear program. Calls construct_tableau and simplex." />
+<meta name="twitter:card" content="summary" />
 
 
 
@@ -54,7 +56,7 @@
   </head>
 
   <body>
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -125,84 +127,62 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>simplexR</h1>
+    <small class="dont-index">Source: <a href='https://github.com/dirkdegel/simplexR/blob/master/R/simplex_functions.R'><code>R/simplex_functions.R</code></a></small>
+    <div class="hidden name"><code>simplexR.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    <p>Solves (find an optimal solution or reports that the problem is not solveable) a generic linear program. Calls <code>construct_tableau</code> and <code>simplex</code>.</p>
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
+    <pre class="usage"><span class='fu'>simplexR</span>(<span class='no'>A</span>, <span class='no'>b</span>, <span class='no'>c</span>, <span class='kw'>sense</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>relation</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='st'>"&lt;="</span>, <span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span>(<span class='no'>b</span>)), <span class='kw'>max_iter</span> <span class='kw'>=</span> <span class='fl'>100</span>)</pre>
 
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="construct_tableau.html">construct_tableau()</a></code> </p>
-        </td>
-        <td><p>construct_tableau</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="get_pivot_column.html">get_pivot_column()</a></code> </p>
-        </td>
-        <td><p>get_pivot_column</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="get_pivot_column_Bland.html">get_pivot_column_Bland()</a></code> </p>
-        </td>
-        <td><p>get_pivot_column_Bland</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="get_pivot_row.html">get_pivot_row()</a></code> </p>
-        </td>
-        <td><p>get_pivot_row</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="optimality_check.html">optimality_check()</a></code> </p>
-        </td>
-        <td><p>optimality_check</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="pivot.html">pivot()</a></code> </p>
-        </td>
-        <td><p>pivot</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="simplex.html">simplex()</a></code> </p>
-        </td>
-        <td><p>simplex</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="simplexR.html">simplexR()</a></code> </p>
-        </td>
-        <td><p>simplexR</p></td>
-      </tr>
-    </tbody>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>A</th>
+      <td><p><code>matrix</code>, coefficient matrix of the LP</p></td>
+    </tr>
+    <tr>
+      <th>b</th>
+      <td><p><code>vector</code>, RHS</p></td>
+    </tr>
+    <tr>
+      <th>c</th>
+      <td><p><code>vector</code>, objective function coefficients</p></td>
+    </tr>
+    <tr>
+      <th>sense</th>
+      <td><p><code>scalar</code>, max = 1, min = -1 (default = 1)</p></td>
+    </tr>
+    <tr>
+      <th>relation</th>
+      <td><p><code>vector</code>, "&lt;=", "=", "=&gt;" (default = "&lt;=")</p></td>
+    </tr>
+    <tr>
+      <th>max_iter</th>
+      <td><p><code>scalar</code>, maximum number of iterations (default = 100)</p></td>
+    </tr>
     </table>
-  </div>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    
+
+
+
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-all-functions">All functions</a></li>
+      <li><a href="#arguments">Arguments</a></li>
+      <li><a href="#value">Value</a></li>
     </ul>
+
   </div>
 </div>
 

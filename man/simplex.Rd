@@ -4,19 +4,15 @@
 \alias{simplex}
 \title{simplex}
 \usage{
-simplex(A, b, c, sense)
+simplex(tableau, max_iter = 100)
 }
 \arguments{
-\item{A}{matrix, the coefficient matrix of the LP}
+\item{tableau}{\code{matrix}, Simplex Tableau in canonical form}
 
-\item{b}{vector, RHS}
-
-\item{c}{vector, objective function coefficients}
-
-\item{sense}{integer, 1 = max}
+\item{max_iter}{\code{scalar}, maximum number of iterations}
 }
 \value{
-optimal Simplex tableau or stops execution in case of an unbounded problem
+optimal Simplex Tableau or stops execution in case of an unbounded problem
 }
 \description{
 simplex

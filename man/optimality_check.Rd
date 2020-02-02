@@ -7,10 +7,10 @@
 optimality_check(t)
 }
 \arguments{
-\item{t}{matrix a Simplex tableau}
+\item{t}{\code{matrix}, a Simplex Tableau}
 }
 \value{
-logical (TRUE = optimal, FALSE not optimal)
+\code{logical}, (TRUE = optimal, FALSE = not optimal)
 }
 \description{
 optimality_check

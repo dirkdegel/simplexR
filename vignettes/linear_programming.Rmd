@@ -2,5 +2,10 @@
 title: "Linear Programming"
 ---
 
+## Introduction
 
-## Definition
+Seien $c=(c_1,\ldots,c_n)^T \in \mathbf{R}^n, A={(a_{ij})}_{{i=1,\ldots,m \atop j=1,\ldots,n}} \in \mathbf{R}^{m\times n}$ und $b=(b_1,\ldots,b_m)^T \in \mathbf{R}^m$ gegeben. Ein Optimierungsproblem der Form 
+$$
+\begin{equation} \max\{c^T x \mid Ax\leq b, x\geq 0 \} \end{equation}
+$$
+mit den Entscheidungsvariablen $x=(x_1,\ldots,x_n)^T \in \mathbf{R}^n$ wird als lineares Programm (LP) in kanonischer Form bezeichnet. Die Funktion $z\colon \mathbf{R}^n \to \mathbf{R}$ mit $z(x) := c^T x$ wird als Zielfunktion, die Menge $X = \{x \in \mathbf{R}^n \mid Ax\leq b, x\geq 0 \}$ als Zulässigkeitsbereich und ein Element $x\in X$ als zulässige Lösung bezeichnet. Existiert ein $x^\star \in X$ mit $x^\star=\arg\max_{x\in X} z(x)$, dann wird $x^\star$ als optimale Lösung und $z^\star := \max_{x\in X} z(x)$ als optimaler Zielfunktionswert bezeichnet.

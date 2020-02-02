@@ -1,17 +1,16 @@
 Package: simplexR
 Type: Package
-Date: 2018-05-27
+Date: 2020-02-02
 Title: Simplex Algorithm
-Version: 0.1.0
+Version: 0.2.0
 Authors@R: person("Dirk", "Degel", role = c("aut", "cre"), email = "dirk.degel@gmail.com") 
 Author: Dirk Degel [aut, cre]
 Maintainer: Dirk Degel <dirk.degel@gmail.com>
-Description: Solves Linear Programs in canonical form.
+Description: Solves Linear Programs using the primal Simplex Algorithm.
     This algorithm is just for teaching purpose not to solve real world problems.
 License: CC0
 URL: https://github.com/dirkdegel/simplexR
 BugReports: https://github.com/dirkdegel/simplexR
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 6.0.1
-
+RoxygenNote: 7.0.2
