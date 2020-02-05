@@ -130,9 +130,8 @@ s.t.  &amp; 2x_1 &amp; + &amp; 1x_2 &amp; \leq &amp; 22 \\
 <a class="sourceLine" id="cb2-9" data-line-number="9"></a>
 <a class="sourceLine" id="cb2-10" data-line-number="10">b &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">22</span>, <span class="dv">23</span>, <span class="dv">40</span>)</a>
 <a class="sourceLine" id="cb2-11" data-line-number="11">c &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">3</span>, <span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb2-12" data-line-number="12">sense &lt;-<span class="st"> </span><span class="dv">1</span></a>
-<a class="sourceLine" id="cb2-13" data-line-number="13"></a>
-<a class="sourceLine" id="cb2-14" data-line-number="14"><span class="kw"><a href="../reference/simplexR.html">simplexR</a></span>(A, b, c, sense)</a></code></pre></div>
+<a class="sourceLine" id="cb2-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb2-13" data-line-number="13"><span class="kw"><a href="../reference/simplexR.html">simplexR</a></span>(A, b, c)</a></code></pre></div>
 <pre><code>## [1] "Start constructing Simplex Tableau"
 ## [1] "Tableau constructed"
 ## [1] "Initial Tableau (Tableau 0)"
@@ -266,14 +265,13 @@ s.t.  &amp;-1x_1 &amp; + &amp; 1x_2 &amp; \leq &amp; 2 \\
 <a class="sourceLine" id="cb8-4" data-line-number="4">A &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(</a>
 <a class="sourceLine" id="cb8-5" data-line-number="5">  <span class="dv">-1</span>, <span class="dv">1</span>,</a>
 <a class="sourceLine" id="cb8-6" data-line-number="6">  <span class="dv">-1</span>, <span class="dv">2</span>,</a>
-<a class="sourceLine" id="cb8-7" data-line-number="7">  <span class="dv">0</span>, <span class="dv">1</span></a>
+<a class="sourceLine" id="cb8-7" data-line-number="7">   <span class="dv">0</span>, <span class="dv">1</span></a>
 <a class="sourceLine" id="cb8-8" data-line-number="8">), <span class="dt">nrow =</span> <span class="dv">3</span>, <span class="dt">ncol =</span> <span class="dv">2</span>, <span class="dt">byrow =</span> <span class="ot">TRUE</span>, <span class="dt">dimnames =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"R1"</span>, <span class="st">"R2"</span>, <span class="st">"R3"</span>), <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"x1"</span>, <span class="st">"x2"</span>)))</a>
 <a class="sourceLine" id="cb8-9" data-line-number="9"></a>
 <a class="sourceLine" id="cb8-10" data-line-number="10">b &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">2</span>, <span class="dv">6</span>, <span class="dv">5</span>)</a>
 <a class="sourceLine" id="cb8-11" data-line-number="11">c &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="op">-</span><span class="dv">2</span>, <span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb8-12" data-line-number="12">sense &lt;-<span class="st"> </span><span class="dv">1</span></a>
-<a class="sourceLine" id="cb8-13" data-line-number="13"></a>
-<a class="sourceLine" id="cb8-14" data-line-number="14"><span class="kw"><a href="../reference/simplexR.html">simplexR</a></span>(A, b, c, sense)</a></code></pre></div>
+<a class="sourceLine" id="cb8-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb8-13" data-line-number="13"><span class="kw"><a href="../reference/simplexR.html">simplexR</a></span>(A, b, c)</a></code></pre></div>
 <pre><code>## [1] "Start constructing Simplex Tableau"
 ## [1] "Tableau constructed"
 ## [1] "Initial Tableau (Tableau 0)"
@@ -328,40 +326,39 @@ s.t.  &amp;-2x_1 &amp; + &amp; 3x_2 &amp; \leq &amp; 12 \\
 <a class="sourceLine" id="cb11-3" data-line-number="3">A &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(</a>
 <a class="sourceLine" id="cb11-4" data-line-number="4">  <span class="dv">-2</span>, <span class="dv">3</span>,</a>
 <a class="sourceLine" id="cb11-5" data-line-number="5">  <span class="dv">-1</span>, <span class="dv">3</span></a>
-<a class="sourceLine" id="cb11-6" data-line-number="6">), <span class="dt">nrow =</span> <span class="dv">2</span>, <span class="dt">ncol =</span> <span class="dv">2</span>, <span class="dt">byrow =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb11-6" data-line-number="6">), <span class="dt">nrow =</span> <span class="dv">2</span>, <span class="dt">ncol =</span> <span class="dv">2</span>, <span class="dt">byrow =</span> <span class="ot">TRUE</span>, <span class="dt">dimnames =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"R1"</span>, <span class="st">"R2"</span>), <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"x1"</span>, <span class="st">"x2"</span>)))</a>
 <a class="sourceLine" id="cb11-7" data-line-number="7"></a>
 <a class="sourceLine" id="cb11-8" data-line-number="8">b &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">12</span>, <span class="dv">18</span>)</a>
 <a class="sourceLine" id="cb11-9" data-line-number="9">c &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">2</span>, <span class="dv">4</span>)</a>
-<a class="sourceLine" id="cb11-10" data-line-number="10">sense &lt;-<span class="st"> </span><span class="dv">1</span></a>
-<a class="sourceLine" id="cb11-11" data-line-number="11"></a>
-<a class="sourceLine" id="cb11-12" data-line-number="12"><span class="kw"><a href="../reference/simplexR.html">simplexR</a></span>(A, b, c, sense)</a></code></pre></div>
+<a class="sourceLine" id="cb11-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb11-11" data-line-number="11"><span class="kw"><a href="../reference/simplexR.html">simplexR</a></span>(A, b, c)</a></code></pre></div>
 <pre><code>## [1] "Start constructing Simplex Tableau"
 ## [1] "Tableau constructed"
 ## [1] "Initial Tableau (Tableau 0)"
-##         s s  b
-##   -2  3 1 0 12
-##   -1  3 0 1 18
-## z -2 -4 0 0  0
+##    x1 x2 s s  b
+## R1 -2  3 1 0 12
+## R2 -1  3 0 1 18
+## z  -2 -4 0 0  0
 ## [1] "----------------------------------------------"
 ## [1] "Iteration 1"
 ## [1] "----------------------------------------------"
 ## [1] "Pivot column: 2"
 ## [1] "Pivot row: 1"
 ## [1] "New tableau at the end of iteration 1"
-##                         s s  b
-##   -0.6666667 1  0.3333333 0  4
-##    1.0000000 0 -1.0000000 1  6
-## z -4.6666667 0  1.3333333 0 16
+##            x1 x2          s s  b
+## R1 -0.6666667  1  0.3333333 0  4
+## R2  1.0000000  0 -1.0000000 1  6
+## z  -4.6666667  0  1.3333333 0 16
 ## [1] "----------------------------------------------"
 ## [1] "Iteration 2"
 ## [1] "----------------------------------------------"
 ## [1] "Pivot column: 1"
 ## [1] "Pivot row: 2"
 ## [1] "New tableau at the end of iteration 2"
-##                s         s  b
-##   0 1 -0.3333333 0.6666667  8
-##   1 0 -1.0000000 1.0000000  6
-## z 0 0 -3.3333333 4.6666667 44
+##    x1 x2          s         s  b
+## R1  0  1 -0.3333333 0.6666667  8
+## R2  1  0 -1.0000000 1.0000000  6
+## z   0  0 -3.3333333 4.6666667 44
 ## [1] "----------------------------------------------"
 ## [1] "Iteration 3"
 ## [1] "----------------------------------------------"
@@ -392,43 +389,42 @@ s.t.  &amp; 2x_1 &amp; + &amp; 1x_2 &amp; \leq &amp; 22 \\
 <a class="sourceLine" id="cb13-6" data-line-number="6">  <span class="dv">2</span>, <span class="dv">1</span>,</a>
 <a class="sourceLine" id="cb13-7" data-line-number="7">  <span class="dv">1</span>, <span class="dv">2</span>,</a>
 <a class="sourceLine" id="cb13-8" data-line-number="8">  <span class="dv">4</span>, <span class="dv">1</span></a>
-<a class="sourceLine" id="cb13-9" data-line-number="9">), <span class="dt">nrow =</span> <span class="dv">3</span>, <span class="dt">ncol =</span> <span class="dv">2</span>, <span class="dt">byrow =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb13-9" data-line-number="9">), <span class="dt">nrow =</span> <span class="dv">3</span>, <span class="dt">ncol =</span> <span class="dv">2</span>, <span class="dt">byrow =</span> <span class="ot">TRUE</span>, <span class="dt">dimnames =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"R1"</span>, <span class="st">"R2"</span>, <span class="st">"R3"</span>), <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"x1"</span>, <span class="st">"x2"</span>)))</a>
 <a class="sourceLine" id="cb13-10" data-line-number="10"></a>
 <a class="sourceLine" id="cb13-11" data-line-number="11">b &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">22</span>, <span class="dv">23</span>, <span class="dv">40</span>)</a>
 <a class="sourceLine" id="cb13-12" data-line-number="12">c &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">3</span>, <span class="fl">1.5</span>)</a>
-<a class="sourceLine" id="cb13-13" data-line-number="13">sense &lt;-<span class="st"> </span><span class="dv">1</span></a>
-<a class="sourceLine" id="cb13-14" data-line-number="14"></a>
-<a class="sourceLine" id="cb13-15" data-line-number="15"><span class="kw"><a href="../reference/simplexR.html">simplexR</a></span>(A, b, c, sense)</a></code></pre></div>
+<a class="sourceLine" id="cb13-13" data-line-number="13"></a>
+<a class="sourceLine" id="cb13-14" data-line-number="14"><span class="kw"><a href="../reference/simplexR.html">simplexR</a></span>(A, b, c)</a></code></pre></div>
 <pre><code>## [1] "Start constructing Simplex Tableau"
 ## [1] "Tableau constructed"
 ## [1] "Initial Tableau (Tableau 0)"
-##           s s s  b
-##    2  1.0 1 0 0 22
-##    1  2.0 0 1 0 23
-##    4  1.0 0 0 1 40
-## z -3 -1.5 0 0 0  0
+##    x1   x2 s s s  b
+## R1  2  1.0 1 0 0 22
+## R2  1  2.0 0 1 0 23
+## R3  4  1.0 0 0 1 40
+## z  -3 -1.5 0 0 0  0
 ## [1] "----------------------------------------------"
 ## [1] "Iteration 1"
 ## [1] "----------------------------------------------"
 ## [1] "Pivot column: 1"
 ## [1] "Pivot row: 3"
 ## [1] "New tableau at the end of iteration 1"
-##           s s     s  b
-##   0  0.50 1 0 -0.50  2
-##   0  1.75 0 1 -0.25 13
-##   1  0.25 0 0  0.25 10
-## z 0 -0.75 0 0  0.75 30
+##    x1    x2 s s     s  b
+## R1  0  0.50 1 0 -0.50  2
+## R2  0  1.75 0 1 -0.25 13
+## R3  1  0.25 0 0  0.25 10
+## z   0 -0.75 0 0  0.75 30
 ## [1] "----------------------------------------------"
 ## [1] "Iteration 2"
 ## [1] "----------------------------------------------"
 ## [1] "Pivot column: 2"
 ## [1] "Pivot row: 1"
 ## [1] "New tableau at the end of iteration 2"
-##          s s    s  b
-##   0 1  2.0 0 -1.0  4
-##   0 0 -3.5 1  1.5  6
-##   1 0 -0.5 0  0.5  9
-## z 0 0  1.5 0  0.0 33
+##    x1 x2    s s    s  b
+## R1  0  1  2.0 0 -1.0  4
+## R2  0  0 -3.5 1  1.5  6
+## R3  1  0 -0.5 0  0.5  9
+## z   0  0  1.5 0  0.0 33
 ## [1] "----------------------------------------------"
 ## [1] "Status: End"
 ## [1] "----------------------------------------------"</code></pre>
@@ -457,59 +453,58 @@ s.t.  &amp; 2x_1 &amp; + &amp; 1x_2 &amp; \leq &amp; 22 \\
 <a class="sourceLine" id="cb16-5" data-line-number="5">  <span class="dv">2</span>, <span class="dv">1</span>,</a>
 <a class="sourceLine" id="cb16-6" data-line-number="6">  <span class="dv">1</span>, <span class="dv">2</span>,</a>
 <a class="sourceLine" id="cb16-7" data-line-number="7">  <span class="dv">4</span>, <span class="dv">1</span>,</a>
-<a class="sourceLine" id="cb16-8" data-line-number="8">  <span class="dv">2</span>, <span class="dv">3</span> <span class="op">/</span><span class="st"> </span><span class="dv">4</span></a>
-<a class="sourceLine" id="cb16-9" data-line-number="9">), <span class="dt">nrow =</span> <span class="dv">4</span>, <span class="dt">ncol =</span> <span class="dv">2</span>, <span class="dt">byrow =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb16-8" data-line-number="8">  <span class="dv">2</span>, <span class="dv">3</span><span class="op">/</span><span class="dv">4</span></a>
+<a class="sourceLine" id="cb16-9" data-line-number="9">), <span class="dt">nrow =</span> <span class="dv">4</span>, <span class="dt">ncol =</span> <span class="dv">2</span>, <span class="dt">byrow =</span> <span class="ot">TRUE</span>, <span class="dt">dimnames =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"R1"</span>, <span class="st">"R2"</span>, <span class="st">"R3"</span>, <span class="st">"R4"</span>), <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"x1"</span>, <span class="st">"x2"</span>)))</a>
 <a class="sourceLine" id="cb16-10" data-line-number="10"></a>
 <a class="sourceLine" id="cb16-11" data-line-number="11">b &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">22</span>, <span class="dv">23</span>, <span class="dv">40</span>, <span class="dv">21</span>)</a>
 <a class="sourceLine" id="cb16-12" data-line-number="12">c &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">3</span>, <span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb16-13" data-line-number="13">sense &lt;-<span class="st"> </span><span class="dv">1</span></a>
-<a class="sourceLine" id="cb16-14" data-line-number="14"></a>
-<a class="sourceLine" id="cb16-15" data-line-number="15"><span class="kw"><a href="../reference/simplexR.html">simplexR</a></span>(A, b, c, sense)</a></code></pre></div>
+<a class="sourceLine" id="cb16-13" data-line-number="13"></a>
+<a class="sourceLine" id="cb16-14" data-line-number="14"><span class="kw"><a href="../reference/simplexR.html">simplexR</a></span>(A, b, c)</a></code></pre></div>
 <pre><code>## [1] "Start constructing Simplex Tableau"
 ## [1] "Tableau constructed"
 ## [1] "Initial Tableau (Tableau 0)"
-##            s s s s  b
-##    2  1.00 1 0 0 0 22
-##    1  2.00 0 1 0 0 23
-##    4  1.00 0 0 1 0 40
-##    2  0.75 0 0 0 1 21
-## z -3 -2.00 0 0 0 0  0
+##    x1    x2 s s s s  b
+## R1  2  1.00 1 0 0 0 22
+## R2  1  2.00 0 1 0 0 23
+## R3  4  1.00 0 0 1 0 40
+## R4  2  0.75 0 0 0 1 21
+## z  -3 -2.00 0 0 0 0  0
 ## [1] "----------------------------------------------"
 ## [1] "Iteration 1"
 ## [1] "----------------------------------------------"
 ## [1] "Pivot column: 1"
 ## [1] "Pivot row: 3"
 ## [1] "New tableau at the end of iteration 1"
-##           s s     s s  b
-##   0  0.50 1 0 -0.50 0  2
-##   0  1.75 0 1 -0.25 0 13
-##   1  0.25 0 0  0.25 0 10
-##   0  0.25 0 0 -0.50 1  1
-## z 0 -1.25 0 0  0.75 0 30
+##    x1    x2 s s     s s  b
+## R1  0  0.50 1 0 -0.50 0  2
+## R2  0  1.75 0 1 -0.25 0 13
+## R3  1  0.25 0 0  0.25 0 10
+## R4  0  0.25 0 0 -0.50 1  1
+## z   0 -1.25 0 0  0.75 0 30
 ## [1] "----------------------------------------------"
 ## [1] "Iteration 2"
 ## [1] "----------------------------------------------"
 ## [1] "Pivot column: 2"
 ## [1] "Pivot row: 1"
 ## [1] "New tableau at the end of iteration 2"
-##          s s     s s  b
-##   0 1  2.0 0 -1.00 0  4
-##   0 0 -3.5 1  1.50 0  6
-##   1 0 -0.5 0  0.50 0  9
-##   0 0 -0.5 0 -0.25 1  0
-## z 0 0  2.5 0 -0.50 0 35
+##    x1 x2    s s     s s  b
+## R1  0  1  2.0 0 -1.00 0  4
+## R2  0  0 -3.5 1  1.50 0  6
+## R3  1  0 -0.5 0  0.50 0  9
+## R4  0  0 -0.5 0 -0.25 1  0
+## z   0  0  2.5 0 -0.50 0 35
 ## [1] "----------------------------------------------"
 ## [1] "Iteration 3"
 ## [1] "----------------------------------------------"
 ## [1] "Pivot column: 5"
 ## [1] "Pivot row: 2"
 ## [1] "New tableau at the end of iteration 3"
-##                s          s s s  b
-##   0 1 -0.3333333  0.6666667 0 0  8
-##   0 0 -2.3333333  0.6666667 1 0  4
-##   1 0  0.6666667 -0.3333333 0 0  7
-##   0 0 -1.0833333  0.1666667 0 1  1
-## z 0 0  1.3333333  0.3333333 0 0 37
+##    x1 x2          s          s s s  b
+## R1  0  1 -0.3333333  0.6666667 0 0  8
+## R2  0  0 -2.3333333  0.6666667 1 0  4
+## R3  1  0  0.6666667 -0.3333333 0 0  7
+## R4  0  0 -1.0833333  0.1666667 0 1  1
+## z   0  0  1.3333333  0.3333333 0 0 37
 ## [1] "----------------------------------------------"
 ## [1] "Status: End"
 ## [1] "----------------------------------------------"</code></pre>

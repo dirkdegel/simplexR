@@ -35,7 +35,7 @@ construct_tableau <- function(A, b, c, sense = 1, relation = rep("<=", length(b)
         relation[i] <- ">="
       }
       else if (relation[i] == ">=") {
-        relation[i] <- ">="
+        relation[i] <- "<="
       }
     }
   }
@@ -57,7 +57,7 @@ construct_tableau <- function(A, b, c, sense = 1, relation = rep("<=", length(b)
       # add -slack variable s >= 0
       c <- c(c, 0)
       A <- cbind(A, s = -1 * diag(m)[, i])
-      # add artificial variable h >= 0
+      # add artificial variable v >= 0
       c <- c(c, -bigM)
       A <- cbind(A, v = diag(m)[, i])
       artificial_variable_index_set <- c(artificial_variable_index_set, ncol(A))
