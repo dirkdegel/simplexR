@@ -38,6 +38,6 @@ Please post an issue first before sending a PR.
 
 ## Related Projects
 
-[linprog](https://cran.r-project.org/web/packages/linprog/index.html) follows a similiar approach, but it seems the package is not maintained anymore.
+[linprog](https://cran.r-project.org/web/packages/linprog/index.html) follows a similar approach, but it seems the package is not maintained anymore.
 
-See CRAN Task View: [Optimization and Mathematical Programming]( https://cran.r-project.org/web/views/Optimization.html) for furher information.
+See CRAN Task View: [Optimization and Mathematical Programming]( https://cran.r-project.org/web/views/Optimization.html) for further information.
