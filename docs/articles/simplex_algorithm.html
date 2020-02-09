@@ -261,7 +261,8 @@ i^{\star} = \arg\min_{i=1,\ldots,m} \left\{ \frac{\bar{b}_i}{\bar{a}_{i,j^\star}
 <div id="example" class="section level3">
 <h3 class="hasAnchor">
 <a href="#example" class="anchor"></a>Example</h3>
-<p>Initial simplex tableau <span class="math inline">\(T^{(0)}\)</span>:</p>
+<p>See Werners</p>
+<p>Initial simplex tableau <span class="math inline">\(T^{(0)}\)</span>: basis <span class="math inline">\(\mathcal{B} = (3,4,5)\)</span>, <span class="math inline">\(\mathcal{N} = (1,2)\)</span>, pivot column <span class="math inline">\(j^\star = 1\)</span>, pivot row <span class="math inline">\(i^\star = 3\)</span>.</p>
 <p><span class="math display">\[
 \begin{array}{rrrrrrr}
   \hline
@@ -269,44 +270,65 @@ i^{\star} = \arg\min_{i=1,\ldots,m} \left\{ \frac{\bar{b}_i}{\bar{a}_{i,j^\star}
   \hline
   s_{1} &amp; 2 &amp; 1 &amp; 1 &amp; 0 &amp; 0 &amp; 22 \\ 
   s_{2} &amp; 1 &amp; 2 &amp; 0 &amp; 1 &amp; 0 &amp; 23 \\ 
-  s_{3} &amp; 4 &amp; 1 &amp; 0 &amp; 0 &amp; 1 &amp; 40 \\ 
-  z &amp; -3 &amp; -2 &amp; -0 &amp; -0 &amp; -0 &amp; 0 \\ 
+  s_{3} &amp; \mathbf{4} &amp; 1 &amp; 0 &amp; 0 &amp; 1 &amp; 40 \\ 
+  z &amp; -3 &amp; -2 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ 
    \hline
 \end{array}
-\]</span> <span class="math inline">\(T^{(1)}\)</span>:</p>
+\]</span></p>
+<p><span class="math display">\[
+\begin{array}{rcll}
+\mathcal{N} &amp; = &amp; (\mathbf{1},2),   &amp; j^\star = 1 &amp; \mbox{variable $x_1$ at position $j^\star = 1$ in $\mathcal{N}$ enters the basis}\\
+\mathcal{B} &amp; = &amp; (3,4,\mathbf{5}), &amp; i^\star = 3 &amp; \mbox{variable $s_3$ at position $i^\star = 3$ in $\mathcal{B}$ leaves the basis}
+\end{array}
+\]</span></p>
+<p><span class="math inline">\(T^{(1)}\)</span>: basis <span class="math inline">\(\mathcal{B} = (3,4,1)\)</span>, <span class="math inline">\(\mathcal{N} = (5,2)\)</span>, pivot column <span class="math inline">\(j^\star = 2\)</span>, pivot row <span class="math inline">\(i^\star = 1\)</span>.</p>
 <p><span class="math display">\[
 \begin{array}{rrrrrrr}
   \hline
  &amp; x_{1} &amp; x_{2} &amp; s_{1} &amp; s_{2} &amp; s_{3} &amp; \bar{b} \\ 
   \hline
-  s_{1} &amp; 0.00 &amp; 0.50 &amp; 1.00 &amp; 0.00 &amp; -0.50 &amp; 2.00 \\ 
-  s_{2} &amp; 0.00 &amp; 1.75 &amp; 0.00 &amp; 1.00 &amp; -0.25 &amp; 13.00 \\ 
-  x_{1} &amp; 1.00 &amp; 0.25 &amp; 0.00 &amp; 0.00 &amp; 0.25 &amp; 10.00 \\ 
-  z &amp; 0.00 &amp; -1.25 &amp; 0.00 &amp; 0.00 &amp; 0.75 &amp; 30.00 \\ 
+  s_{1} &amp; 0 &amp; \mathbf{0.5} &amp; 1 &amp; 0 &amp; -0.5 &amp; 2 \\ 
+  s_{2} &amp; 0 &amp; 1.75 &amp; 0 &amp; 1 &amp; -0.25 &amp; 13 \\ 
+  x_{1} &amp; 1 &amp; 0.25 &amp; 0 &amp; 0 &amp; 0.25 &amp; 10 \\ 
+  z     &amp; 0 &amp;-1.25 &amp; 0 &amp; 0 &amp; 0.75 &amp; 30 \\ 
    \hline
 \end{array}
-\]</span> <span class="math inline">\(T^{(2)}\)</span>:</p>
+\]</span></p>
+<p><span class="math display">\[
+\begin{array}{rcll}
+\mathcal{N} &amp; = &amp; (\mathbf{1},2),   &amp; j^\star = 1 &amp; \mbox{variable $x_1$ at position $j^\star = 1$ in $\mathcal{N}$ enters the basis}\\
+\mathcal{B} &amp; = &amp; (3,4,\mathbf{5}), &amp; i^\star = 3 &amp; \mbox{variable $s_3$ at position $i^\star = 3$ in $\mathcal{B}$ leaves the basis}
+\end{array}
+\]</span></p>
+<p><span class="math inline">\(T^{(2)}\)</span>: basis <span class="math inline">\(\mathcal{B} = (2,4,1)\)</span>, <span class="math inline">\(\mathcal{N} = (5,3)\)</span>, pivot column <span class="math inline">\(j^\star = 5\)</span>, pivot row <span class="math inline">\(i^\star = 2\)</span>.</p>
 <p><span class="math display">\[
 \begin{array}{rrrrrrr}
   \hline
  &amp; x_{1} &amp; x_{2} &amp; s_{1} &amp; s_{2} &amp; s_{3} &amp; \bar{b} \\ 
   \hline
-  x_{2} &amp; 0.00 &amp; 1.00 &amp; 2.00 &amp; 0.00 &amp; -1.00 &amp; 4.00 \\ 
-  s_{2} &amp; 0.00 &amp; 0.00 &amp; -3.50 &amp; 1.00 &amp; 1.50 &amp; 6.00 \\ 
-  x_{1} &amp; 1.00 &amp; 0.00 &amp; -0.50 &amp; 0.00 &amp; 0.50 &amp; 9.00 \\ 
-  z &amp; 0.00 &amp; 0.00 &amp; 2.50 &amp; 0.00 &amp; -0.50 &amp; 35.00 \\ 
+  x_{2} &amp; 0 &amp; 1 &amp;  2   &amp; 0 &amp; -1   &amp; 4 \\ 
+  s_{2} &amp; 0 &amp; 0 &amp; -3.5 &amp; 1 &amp;  \mathbf{1.5} &amp; 6 \\ 
+  x_{1} &amp; 1 &amp; 0 &amp; -0.5 &amp; 0 &amp;  0.5 &amp; 9 \\ 
+  z     &amp; 0 &amp; 0 &amp;  2.5 &amp; 0 &amp; -0.5 &amp; 35 \\ 
    \hline
 \end{array}
-\]</span> <span class="math inline">\(T^{(3)}\)</span>:</p>
+\]</span></p>
+<p><span class="math display">\[
+\begin{array}{rcll}
+\mathcal{N} &amp; = &amp; (\mathbf{1},2),   &amp; j^\star = 1 &amp; \mbox{variable $x_1$ at position $j^\star = 1$ in $\mathcal{N}$ enters the basis}\\
+\mathcal{B} &amp; = &amp; (3,4,\mathbf{5}), &amp; i^\star = 3 &amp; \mbox{variable $s_3$ at position $i^\star = 3$ in $\mathcal{B}$ leaves the basis}
+\end{array}
+\]</span></p>
+<p><span class="math inline">\(T^{(3)}\)</span>: basis <span class="math inline">\(\mathcal{B} = (2,5,1)\)</span>, <span class="math inline">\(\mathcal{N} = (4,3)\)</span>. The basis is optimal.</p>
 <p><span class="math display">\[
 \begin{array}{rrrrrrr}
   \hline
  &amp; x_{1} &amp; x_{2} &amp; s_{1} &amp; s_{2} &amp; s_{3} &amp; \bar{b} \\ 
   \hline
-  x_{2} &amp; 0.00 &amp; 1.00 &amp; -0.33 &amp; 0.67 &amp; 0.00 &amp; 8.00 \\ 
-  s_{3} &amp; 0.00 &amp; 0.00 &amp; -2.33 &amp; 0.67 &amp; 1.00 &amp; 4.00 \\ 
-  x_{1} &amp; 1.00 &amp; 0.00 &amp; 0.67 &amp; -0.33 &amp; 0.00 &amp; 7.00 \\ 
-  z &amp; 0.00 &amp; 0.00 &amp; 1.33 &amp; 0.33 &amp; 0.00 &amp; 37.00 \\ 
+  x_{2} &amp; 0 &amp; 1 &amp; -0.33 &amp;  0.67 &amp; 0 &amp;  8 \\ 
+  s_{3} &amp; 0 &amp; 0 &amp; -2.33 &amp;  0.67 &amp; 1 &amp;  4 \\ 
+  x_{1} &amp; 1 &amp; 0 &amp;  0.67 &amp; -0.33 &amp; 0 &amp;  7 \\ 
+  z     &amp; 0 &amp; 0 &amp;  1.33 &amp;  0.33 &amp; 0 &amp; 37 \\ 
    \hline
 \end{array}
 \]</span></p>
