@@ -1,5 +1,9 @@
 # Simplex Algorithm in R
 
+The `simplexR` package was developed with the intention to be used for educational purposes. The idea is to allow students to solve
+linear programs with the **Simplex Method** in a similar way it is thought in most courses and text books (see literature below). Dedicated functions allow the user to apply the simplex step by step and be able to verify their own calculations. The aim is to allow a more comprehensive understanding of the **Simplex Algorithm** (primal simplex algorithm, bigM-method, two-phase simplex algorithm, rivised simplex algorithm, dual simplex algorithm).
+
+Additionally, the implementation in `R` is meant to provide an opportunity for users to get started with programming via an algorithm they are well familiar with.
 
 The Wikipedia articles gives a good starting point if you would like to learn more about [linear programming](https://en.wikipedia.org/wiki/Linear_programming) and the [simplex algorithm](https://en.wikipedia.org/wiki/Simplex_algorithm) (simplex method).
 
@@ -35,6 +39,14 @@ Please note that this project is released with a [Contributor Code of Conduct](C
 ## Contributing
 
 Please post an issue first before sending a PR.
+
+## Literature
+
+- Linear Programming 1: Introduction, George B. Dantzig, Mukund N. Thapa
+- Linear Programming 2: Theory and Extensions, George B. Dantzig, Mukund N. Thapa
+- Algorithmische Diskrete Mathematik II: Lineare Optimierung, [Vorlesungsskript](http://www.zib.de/groetschel/teaching/skriptADMII.pdf), Martin Grötschel 
+- Grundlagen des Operations Research: Mit Aufgaben und Lösungen, Brigitte Werners
+- Operations Research - Deterministische Modelle und Methoden - Stephan Dempe, Heiner Schreier, 1. Auflage September 2006, Wiesbaden
 
 ## Related Projects
 

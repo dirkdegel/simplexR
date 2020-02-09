@@ -5,9 +5,15 @@ title: "Examples --- Canonical Form of LP"
 ```{r message = FALSE, warning = FALSE, includet = FALSE}
 
 library(simplexR)
-library(gMOIP) # for visualisations
 
 ```
+
+```{r, message = FALSE, warning = FALSE, includet = FALSE, echo = FALSE}
+
+source("_gMOIP_functions.R")
+
+```
+
 
 ## Standard Case
 
@@ -25,7 +31,7 @@ $$
 
 ```{r}
 
-# standard case 
+# standard case
 # optimal solution: x = (7, 8), z = 37
 
 A <- matrix(c(
@@ -41,15 +47,15 @@ simplexR(A, b, c)
 
 ```
 
-```{r}
+```{r, echo = FALSE}
 
 # visualisation
-gMOIP::plotPolytope(A = A, b = b, obj = c, crit = "max", plotOptimum = TRUE, labels = "coord")
+plot_linear_program(A = A, b = b, obj = c, crit = "max", plotOptimum = TRUE, labels = "coord")
 
 ```
 
 
-## Standard Case---Exponential Time Complexity 
+## Standard Case---Exponential Time Complexity
 
 $$
 \begin{array}{rrcrcr}
@@ -77,10 +83,10 @@ simplexR(A, b, c)
 
 ```
 
-```{r}
+```{r, echo = FALSE}
 
 # visualisation
-gMOIP::plotPolytope(A = A, b = b, obj = c, crit = "max", plotOptimum = TRUE, labels = "coord")
+plot_linear_program(A = A, b = b, obj = c, crit = "max", plotOptimum = TRUE, labels = "coord")
 
 ```
 
@@ -114,14 +120,14 @@ simplexR(A, b, c)
 
 ```
 
-```{r}
+```{r, echo = FALSE}
 
 # visualisation is a bit wrong!
-gMOIP::plotPolytope(A = A, b = b, obj = c, crit = "max", plotOptimum = TRUE, labels = "coord")
+plot_linear_program(A = A, b = b, obj = c, crit = "max", plotOptimum = TRUE, labels = "coord")
 
 ```
 
-## Unbounded Feasible Region, no Optimal Solution 
+## Unbounded Feasible Region, no Optimal Solution
 
 --- Werners, Brigitte - Grundlagen des Operations Research (p. 60)
 
@@ -150,7 +156,7 @@ simplexR(A, b, c)
 
 ```
 
-## Dual Degeneracy 
+## Dual Degeneracy
 
 --- Werners, Brigitte - Grundlagen des Operations Research (p. 62)
 
@@ -183,10 +189,10 @@ simplexR(A, b, c)
 
 ```
 
-```{r}
+```{r, echo = FALSE}
 
 # visualisation
-gMOIP::plotPolytope(A = A, b = b, obj = c, crit = "max", plotOptimum = TRUE, labels = "coord")
+plot_linear_program(A = A, b = b, obj = c, crit = "max", plotOptimum = TRUE, labels = "coord")
 
 ```
 
@@ -224,9 +230,9 @@ simplexR(A, b, c)
 
 ```
 
-```{r}
+```{r, echo = FALSE}
 
 # visualisation
-gMOIP::plotPolytope(A = A, b = b, obj = c, crit = "max", plotOptimum = TRUE, labels = "coord")
+plot_linear_program(A = A, b = b, obj = c, crit = "max", plotOptimum = TRUE, labels = "coord")
 
 ```

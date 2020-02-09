@@ -107,7 +107,230 @@
 <div id="introduction" class="section level2">
 <h2 class="hasAnchor">
 <a href="#introduction" class="anchor"></a>Introduction</h2>
-<p>The simplex algorithm, developed by George Dantzig in 1947, solves LP problems by constructing a feasible solution at a vertex of the polytope and then walking along a path on the edges of the polytope to vertices with non-decreasing values of the objective function until an optimum is reached for sure. In many practical problems, “stalling” occurs: many pivots are made with no increase in the objective function. In rare practical problems, the usual versions of the simplex algorithm may actually “cycle”. To avoid cycles, researchers developed new pivoting rules. In practice, the simplex algorithm is quite efficient and can be guaranteed to find the global optimum if certain precautions against cycling are taken. The simplex algorithm has been proved to solve “random” problems efficiently, i.e. in a cubic number of steps, which is similar to its behavior on practical problems. However, the simplex algorithm has poor worst-case behavior: Klee and Minty constructed a family of linear programming problems for which the simplex method takes a number of steps exponential in the problem size. In fact, for some time it was not known whether the linear programming problem was solvable in polynomial time, i.e. of complexity class P.</p>
+<p>The simplex algorithm, developed by George Dantzig in 1947, solves LP problems by constructing a feasible solution at a vertex of the polytope and then walking along a path on the edges of the polytope to vertices with non-decreasing values of the objective function until an optimum is reached for sure. In many practical problems, “stalling” occurs: many pivots are made with no increase in the objective function. In rare practical problems, the usual versions of the simplex algorithm may actually “cycle”. To avoid cycles, researchers developed new pivoting rules. In practice, the simplex algorithm is quite efficient and can be guaranteed to find the global optimum if certain precautions against cycling are taken. The simplex algorithm has been proved to solve “random” problems efficiently, i.e. in a cubic number of steps, which is similar to its behavior on practical problems. However, the simplex algorithm has poor worst-case behavior: Klee and Minty constructed a family of linear programming problems for which the simplex method takes a number of steps exponential in the problem size. In fact, for some time it was not known whether the linear programming problem was solvable in polynomial time, i.e. of complexity class <span class="math inline">\(\mathbb{P}\)</span>.</p>
+<div id="basic-solutions-definition" class="section level3">
+<h3 class="hasAnchor">
+<a href="#basic-solutions-definition" class="anchor"></a>Basic Solutions – Definition</h3>
+<p>Let <span class="math inline">\(\mathcal{B}\)</span> be an ordered set of <span class="math inline">\(m\)</span> distinct indices <span class="math inline">\((i_1,\ldots,i_m)\)</span> taken from <span class="math inline">\(\{1,\ldots,n\}\)</span>. <span class="math inline">\(\mathcal{B}\)</span> is called a basis for <span class="math inline">\(\max\{ c^\intercal x \mid Ax = b, x \geq 0 \}\)</span> if <span class="math inline">\(A_B := A_{:j \in \mathcal{B}}\)</span> is nonsingular. The variables <span class="math inline">\(x_{B}\)</span> are known as the basic variables and the variables <span class="math inline">\(x_{N}\)</span> as the non-basic variables, where <span class="math inline">\(\mathcal{N} = (j_1,\ldots,j_{n-m}) = \{1,\ldots,n\}\backslash \mathcal{B}\)</span>. The corresponding basic solution <span class="math inline">\(x \in \mathbb{R}^n\)</span> is given by <span class="math inline">\(x_{N} = 0\)</span> and <span class="math inline">\(x_{B} = A_B^{-1}b\)</span>. <span class="math inline">\(\mathcal{B}\)</span> is called (primal) <em>feasible</em> if <span class="math inline">\(A_B^{-1}b \geq 0\)</span> and <span class="math inline">\(x\)</span> is than called <em>basic feasible solution</em> (BFS).</p>
+<p>Than the linear program in standard form <span class="math display">\[
+z^\star = \max\{ c^\intercal x \mid Ax = b, x \geq 0 \}  
+\]</span> can be written as: <span class="math display">\[
+\begin{array}{ccc}
+z^\star = \max &amp; c_N^T x_N &amp; + &amp; c_B^T x_B \\
+&amp; A_N x_N &amp; + &amp; A_B x_B &amp; = &amp; b \\
+&amp; &amp; &amp; x_N,x_B &amp; \geq &amp; 0
+\end{array}
+\]</span> or alternatively (with the additional decision variable <span class="math inline">\(z \in \mathbb{R}\)</span>) as: <span class="math display">\[
+\begin{array}{rccc}
+z^\star = \max \,\, z \\
+z &amp; - &amp; c_N^T x_N &amp; -  &amp; c_B^T x_B &amp; = &amp; 0\\
+&amp;&amp; A_N x_N &amp; + &amp; A_B x_B &amp; = &amp; b \\
+&amp;&amp; &amp; &amp;x_N,x_B &amp; \geq &amp; 0
+\end{array}
+\]</span> Representation in <span class="math display">\[x_B = A_B^{-1}b - A_B^{-1} A_N x_N\]</span></p>
+<p>and <span class="math display">\[
+\begin{array}{rrl}
+z &amp; = &amp; c_N^T x_N + c_B^T x_B \\
+  &amp; = &amp; c_N^T x_N + c_B^T \left[ A_B^{-1}b - A_B^{-1} A_N x_N \right] \\
+  &amp; = &amp; c_N^T x_N + c_B^T  A_B^{-1}b - c_B^T A_B^{-1} A_N x_N \\
+  &amp; = &amp; \left[ c_N^T - c_B^T A_B^{-1} A_N \right] x_N + c_B^TA_B^{-1} b
+\end{array}
+\]</span> and so <span class="math display">\[
+\begin{array}{rccc}
+z^\star = \max \left[ c_N^T - c_B^T A_B^{-1} A_N \right] x_N + c_B^TA_B^{-1} b \\
+A_B^{-1}b - A_B^{-1} A_N x_N &amp; \geq &amp; 0 \\
+x_N &amp; \geq &amp; 0
+\end{array}
+\]</span></p>
+</div>
+<div id="theorem-optimality-test" class="section level3">
+<h3 class="hasAnchor">
+<a href="#theorem-optimality-test" class="anchor"></a>Theorem: Optimality Test</h3>
+<p>A basic (primal) feasible solution <span class="math inline">\(x_B = A_B^{-1}b, x_N = 0\)</span> is optimal, if <span class="math inline">\(c_N^T - c_B^T A_B^{-1} A_N \geq 0\)</span>. The optimal objective value is <span class="math inline">\(z^\star = c_B^TA_B^{-1} b\)</span>.</p>
+</div>
+<div id="tableau-form" class="section level3">
+<h3 class="hasAnchor">
+<a href="#tableau-form" class="anchor"></a>Tableau Form</h3>
+<p><span class="math display">\[
+T_{\mathcal{B}} := 
+\left[
+\begin{array}{c|c}
+-c^T + c_B^T A_B^{-1}A &amp; c_B^T A_B^{-1} b \\
+A_B^{-1}A &amp; A_B^{-1}b 
+\end{array}
+\right]_{\mathcal{B}}
+=
+\left[
+\begin{array}{cc|c}
+-c_N^T + c_B^T A_B^{-1}A_N &amp; - c_B^T + c_B^T A_B^{-1} A_B &amp; c_B^T A_B^{-1} b \\
+A_B^{-1}A_N  &amp; A_B^{-1} A_B &amp; A_B^{-1}b 
+\end{array}
+\right]_{\mathcal{B}}
+\]</span></p>
+</div>
+</div>
+<div id="primal-simplex-algorithm-tableau-form" class="section level2">
+<h2 class="hasAnchor">
+<a href="#primal-simplex-algorithm-tableau-form" class="anchor"></a>Primal Simplex Algorithm (Tableau Form)</h2>
+<p>See Dantzig</p>
+<p>Assume that a linear program is given in standard form: <span class="math display">\[
+\begin{array}{ccc}
+z^\star = \max &amp; c_N^T x_N &amp; + &amp; 0 x_B \\
+&amp; A_N x_N &amp; + &amp; \mathbb{1} x_B &amp; = &amp; b \\
+&amp; &amp; &amp; x_N,x_B &amp; \geq &amp; 0
+\end{array} 
+\qquad\iff\qquad
+\begin{array}{rccc}
+z^\star = \max \,\, z \\
+z &amp; - &amp; c_N^T x_N &amp; -  &amp; 0 x_B &amp; = &amp; 0\\
+&amp;&amp; A_N x_N &amp; + &amp; \mathbb{1} x_B &amp; = &amp; b \\
+&amp;&amp; &amp; &amp;z, x_N,x_B &amp; \geq &amp; 0
+\end{array}
+\]</span> where <span class="math inline">\(A\)</span> is of the form <span class="math inline">\(A = (A_N, \mathbb{1})\)</span>. In the (primal) Simplex Algorithm it is <em>required</em> that the initial basic solution is (primal) feasible, i.e., <span class="math display">\[
+b\geq 0.
+\]</span></p>
+<p>The LP (initial basis <span class="math inline">\(\mathcal{B} = (m+1,\ldots,n)\)</span>) is than written in tableau form (simplex tableau) as: <span class="math display">\[
+T = \left[
+\begin{array}{ccc|c}
+1 &amp; -c_N^T &amp; 0 &amp; 0 \\
+0 &amp; A_N  &amp; \mathbb{1} &amp; b 
+\end{array}
+\right]
+=
+\left[
+\begin{array}{cc|c}
+-c_N^T &amp; 0 &amp; 0 \\
+A_N  &amp; \mathbb{1} &amp; b 
+\end{array}
+\right]
+\]</span></p>
+<p>Given a feasible basis <span class="math inline">\(\mathcal{B}^{(k)}\)</span> in iteration <span class="math inline">\(k\)</span> the current simplex tableau is: <span class="math display">\[
+T^{(k)} = 
+\left[
+\begin{array}{cc|c}
+-c_N^T + c_B^T A_B^{-1}A_N &amp; -c_B^T + c_B^T A_B^{-1}\mathbb{1} &amp; c_B^T A_B^{-1}b \\
+A_B^{-1}A_N  &amp; A_B^{-1}\mathbb{1} &amp; A_B^{-1}b 
+\end{array}
+\right]^{(k)}_{\mathcal{B}}
+=:_{sorted}
+\bar{T} = 
+\left[
+\begin{array}{cc|c}
+-\bar{c}_N^T &amp; 0 &amp; \bar{z} \\
+\bar{A}_N  &amp; \mathbb{1} &amp; \bar{b} 
+\end{array}
+\right]_{\mathcal{B}^{(k)}}
+\]</span></p>
+<ol style="list-style-type: decimal">
+<li><p><em>Smallest Reduced Cost</em>: Determine <span class="math display">\[
+j^{\star} = \arg\min_{j \in \mathcal{N}} \bar{c}_j
+\]</span> where <span class="math inline">\(j^{\star}\)</span> is the index <span class="math inline">\(j\)</span> (argument) where <span class="math inline">\(\bar{c_j}\)</span> attains a minimum, that is, <span class="math display">\[
+\bar{c}_{j^{\star}} = \min_{j \in \mathcal{N}} \bar{c}_j
+\]</span></p></li>
+<li><p><em>Optimality Test</em>: If <span class="math inline">\(\bar{c}_{j^\star} \geq 0\)</span>, the basic feasible solution as optimal. Stop.</p></li>
+<li><p><em>Pivot Column</em> (Incoming Variable): If <span class="math inline">\(\bar{c}_{j^\star} &lt; 0\)</span>, then <span class="math inline">\(j^\star\)</span> is the index of the incoming basic variable.</p></li>
+<li><p><em>Test for unbounded</em> <span class="math inline">\(c^T x\)</span>: If <span class="math inline">\(\bar{A}_{j^\star} \leq 0\)</span>, the problem is unbounded <span class="math inline">\(c^T x \to \infty\)</span>. Stop.</p></li>
+<li>
+<em>Pivot Row</em> (Outgoing Variable) – minimum ratio test.: <span class="math display">\[
+i^{\star} = \arg\min_{i=1,\ldots,m} \left\{ \frac{\bar{b}_i}{\bar{a}_{i,j^\star}} \mid \bar{a}_{i,j^\star} &gt; 0 \right\}
+\]</span> In the case of ties (<span class="math inline">\(i^{\star}\)</span> is not unique), let <span class="math inline">\(\mathcal{R}\)</span> be the set of rows <span class="math inline">\(k\)</span> tied: <span class="math display">\[
+\mathcal{R} = \left\{k \mid \frac{\bar{b}_k}{\bar{a}_{kj^\star}} \leq \frac{\bar{b}_i}{\bar{a}_{ij^\star}}, \bar{a}_{kj^\star} &gt; 0,\bar{a}_{ij^\star} &gt; 0, i = 1,\ldots, m \right\}
+\]</span>
+</li>
+</ol>
+<ul>
+<li><p>Primal nondeggenerated case: If <span class="math inline">\(\bar{b}_k \geq 0\)</span> for all <span class="math inline">\(k \in \mathcal{R}\)</span>, choice of <span class="math inline">\(k\)</span> among the ties is arbitrary.</p></li>
+<li><p>Primal degenerated case: If <span class="math inline">\(\bar{b}_k = 0\)</span> for more than one <span class="math inline">\(k \in \mathcal{R}\)</span>, Select the samllest index (Bland’s rule).</p></li>
+</ul>
+<ol start="6" style="list-style-type: decimal">
+<li>
+<em>Pivot on</em> <span class="math inline">\(\bar{a}_{i^\star j^\star}\)</span>:</li>
+</ol>
+<ul>
+<li>Pivot row <span class="math inline">\(i^{\star}\)</span>: <span class="math inline">\(\bar{T}_{i^{\star}:} \leftarrow \frac{\bar{T}_{i^{\star}:}}{\bar{a}_{i^\star j^\star}}\)</span>
+</li>
+<li>For <span class="math inline">\(i = 1,\ldots,m; i \neq i^{\star}\)</span>: <span class="math inline">\(\bar{T}_{i:} \leftarrow \bar{T}_{i:} - \bar{T}_{ij^\star} \cdot \bar{T}_{i^{\star}:}\)</span>
+</li>
+<li>old basis <span class="math inline">\(\mathcal{B} = (i_1,\ldots,i_{i^\star-1},i_{i^\star},i_{i^\star+1},\ldots,i_m)\)</span>
+</li>
+<li>Basis: <span class="math inline">\(\mathcal{B} \leftarrow (i_1,\ldots,i_{i^\star-1},j_{j^\star},i_{i^\star+1},\ldots,i_m)\)</span>
+</li>
+<li>Nonbasis: <span class="math inline">\(\mathcal{N} \leftarrow (j_1,\ldots,j_{j^\star-1},i_{i^\star},j_{j^\star+1},\ldots,j_{n-m})\)</span>
+</li>
+</ul>
+<div id="example" class="section level3">
+<h3 class="hasAnchor">
+<a href="#example" class="anchor"></a>Example</h3>
+<p>Initial simplex tableau <span class="math inline">\(T^{(0)}\)</span>:</p>
+<p><span class="math display">\[
+\begin{array}{rrrrrrr}
+  \hline
+ &amp; x_{1} &amp; x_{2} &amp; s_{1} &amp; s_{2} &amp; s_{3} &amp; \bar{b} \\ 
+  \hline
+  s_{1} &amp; 2 &amp; 1 &amp; 1 &amp; 0 &amp; 0 &amp; 22 \\ 
+  s_{2} &amp; 1 &amp; 2 &amp; 0 &amp; 1 &amp; 0 &amp; 23 \\ 
+  s_{3} &amp; 4 &amp; 1 &amp; 0 &amp; 0 &amp; 1 &amp; 40 \\ 
+  z &amp; -3 &amp; -2 &amp; -0 &amp; -0 &amp; -0 &amp; 0 \\ 
+   \hline
+\end{array}
+\]</span> <span class="math inline">\(T^{(1)}\)</span>:</p>
+<p><span class="math display">\[
+\begin{array}{rrrrrrr}
+  \hline
+ &amp; x_{1} &amp; x_{2} &amp; s_{1} &amp; s_{2} &amp; s_{3} &amp; \bar{b} \\ 
+  \hline
+  s_{1} &amp; 0.00 &amp; 0.50 &amp; 1.00 &amp; 0.00 &amp; -0.50 &amp; 2.00 \\ 
+  s_{2} &amp; 0.00 &amp; 1.75 &amp; 0.00 &amp; 1.00 &amp; -0.25 &amp; 13.00 \\ 
+  x_{1} &amp; 1.00 &amp; 0.25 &amp; 0.00 &amp; 0.00 &amp; 0.25 &amp; 10.00 \\ 
+  z &amp; 0.00 &amp; -1.25 &amp; 0.00 &amp; 0.00 &amp; 0.75 &amp; 30.00 \\ 
+   \hline
+\end{array}
+\]</span> <span class="math inline">\(T^{(2)}\)</span>:</p>
+<p><span class="math display">\[
+\begin{array}{rrrrrrr}
+  \hline
+ &amp; x_{1} &amp; x_{2} &amp; s_{1} &amp; s_{2} &amp; s_{3} &amp; \bar{b} \\ 
+  \hline
+  x_{2} &amp; 0.00 &amp; 1.00 &amp; 2.00 &amp; 0.00 &amp; -1.00 &amp; 4.00 \\ 
+  s_{2} &amp; 0.00 &amp; 0.00 &amp; -3.50 &amp; 1.00 &amp; 1.50 &amp; 6.00 \\ 
+  x_{1} &amp; 1.00 &amp; 0.00 &amp; -0.50 &amp; 0.00 &amp; 0.50 &amp; 9.00 \\ 
+  z &amp; 0.00 &amp; 0.00 &amp; 2.50 &amp; 0.00 &amp; -0.50 &amp; 35.00 \\ 
+   \hline
+\end{array}
+\]</span> <span class="math inline">\(T^{(3)}\)</span>:</p>
+<p><span class="math display">\[
+\begin{array}{rrrrrrr}
+  \hline
+ &amp; x_{1} &amp; x_{2} &amp; s_{1} &amp; s_{2} &amp; s_{3} &amp; \bar{b} \\ 
+  \hline
+  x_{2} &amp; 0.00 &amp; 1.00 &amp; -0.33 &amp; 0.67 &amp; 0.00 &amp; 8.00 \\ 
+  s_{3} &amp; 0.00 &amp; 0.00 &amp; -2.33 &amp; 0.67 &amp; 1.00 &amp; 4.00 \\ 
+  x_{1} &amp; 1.00 &amp; 0.00 &amp; 0.67 &amp; -0.33 &amp; 0.00 &amp; 7.00 \\ 
+  z &amp; 0.00 &amp; 0.00 &amp; 1.33 &amp; 0.33 &amp; 0.00 &amp; 37.00 \\ 
+   \hline
+\end{array}
+\]</span></p>
+</div>
+</div>
+<div id="bigm-method" class="section level2">
+<h2 class="hasAnchor">
+<a href="#bigm-method" class="anchor"></a>BigM-Method</h2>
+<p>to do</p>
+</div>
+<div id="two-phase-method" class="section level2">
+<h2 class="hasAnchor">
+<a href="#two-phase-method" class="anchor"></a>Two Phase Method</h2>
+<p>to do</p>
+</div>
+<div id="rivised-primal-simplex" class="section level2">
+<h2 class="hasAnchor">
+<a href="#rivised-primal-simplex" class="anchor"></a>Rivised (primal) Simplex</h2>
+<p>to do</p>
+</div>
+<div id="dual-simplex-algorithm" class="section level2">
+<h2 class="hasAnchor">
+<a href="#dual-simplex-algorithm" class="anchor"></a>Dual Simplex Algorithm</h2>
+<p>to do</p>
 </div>
   </div>
 
@@ -118,6 +341,11 @@
 <a href="#tocnav" class="anchor"></a>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
 <li><a href="#introduction">Introduction</a></li>
+      <li><a href="#primal-simplex-algorithm-tableau-form">Primal Simplex Algorithm (Tableau Form)</a></li>
+      <li><a href="#bigm-method">BigM-Method</a></li>
+      <li><a href="#two-phase-method">Two Phase Method</a></li>
+      <li><a href="#rivised-primal-simplex">Rivised (primal) Simplex</a></li>
+      <li><a href="#dual-simplex-algorithm">Dual Simplex Algorithm</a></li>
       </ul>
 </div>
       </div>

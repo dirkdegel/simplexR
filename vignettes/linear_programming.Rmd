@@ -21,7 +21,7 @@ In order to use the Simplex algorithm to solve a linear program the so called st
 
 ## Standard Form a Linear Program
 
-Let $A \in \mathbb{R}^{m \times n}, b \in \mathbb{R}^{m}, b \geq 0$ and $c \in \mathbb{R}^{n}$ be a given matrix respectively vectors. 
+Let $A \in \mathbb{R}^{m \times n}, b \in \mathbb{R}^{m}$ and $c \in \mathbb{R}^{n}$ be a given matrix respectively vectors. 
 A **linear program** in **standard form** is defined as:
 $$
 \max\{ c^\intercal x \mid Ax = b, x \geq 0 \}.  
