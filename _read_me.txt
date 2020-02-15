@@ -1,10 +1,15 @@
+usethis::use_pkgdown()
 pkgdown::build_site()
 pkgdown::build_reference_index()
 
 
-docsreference:
-  - title: "Primal Simplex Aglorithm"
-    desc: >
-      Functions related to the primal simplex algorithm.
-    contents:
-      - simplex
+pkgdown::build_reference()
+
+navbar:
+  type: default
+  left:
+  - text: Intro
+    href: articles/introduction.html
+  - text: Reference
+    href: reference.html
+  - text: Articles

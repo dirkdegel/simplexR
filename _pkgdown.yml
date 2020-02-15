@@ -1,1 +1,24 @@
-destination:
+destination: docs
+
+template:
+  params:
+    bootswatch: lumen
+
+reference:
+  - title: "Preprocessing"
+    desc: >
+      A function to construct a (primal) feasible canonical simplex tableau.
+    contents:
+      - construct_tableau
+  - title: "Primal Simplex Functions"
+    desc: >
+      Functions used in the primal simplex algorithm.
+    contents:
+      - optimality_check
+      - get_pivot_column
+      - get_pivot_column_Bland
+      - get_pivot_row
+      - pivot
+      - simplex
+      - simplexR
+  - title: "Dual Simplex Functions"
