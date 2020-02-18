@@ -13,12 +13,10 @@
 #' @param relation \code{vector}, {"<=", "=", "=>"} (default = "<=")
 #' @param bigM \code{scalar}, M used in bigM-method (default = 1000)
 #'
-#' @return \code{matrix}, initial simplex tableau
+#' @return \code{matrix}, initial (primal feasible) simplex tableau
 #' @export
 #'
 construct_tableau <- function(A, b, c, sense = 1, relation = rep("<=", length(b)), bigM = 1000) {
-  #
-  bigM <- bigM
   #
   print("Start constructing Simplex Tableau")
   #
@@ -40,7 +38,7 @@ construct_tableau <- function(A, b, c, sense = 1, relation = rep("<=", length(b)
     }
   }
   #
-  # transform all constraints in [=]-form with a salck or artificial variable
+  # transform all constraints in [=]-form with a slack or artificial variable
   # "<=" -> add slack variable
   # "="  -> add artificial variable
   # ">=" -> add -1 * slack and artificial variable
@@ -58,14 +56,22 @@ construct_tableau <- function(A, b, c, sense = 1, relation = rep("<=", length(b)
       c <- c(c, 0)
       A <- cbind(A, s = -1 * diag(m)[, i])
       # add artificial variable v >= 0
-      c <- c(c, -bigM)
+      if (sense == 1){
+        c <- c(c, -bigM)
+      } else {
+        c <- c(c, bigM)
+      }
       A <- cbind(A, v = diag(m)[, i])
       artificial_variable_index_set <- c(artificial_variable_index_set, ncol(A))
       artificial_variable_row_index_set <- c(artificial_variable_row_index_set, i)
     }
     else if (relation[i] == "=") {
       # add artificial variable v >= 0
-      c <- c(c, -bigM)
+      if (sense == 1){
+        c <- c(c, -bigM)
+      } else {
+        c <- c(c, bigM)
+      }
       A <- cbind(A, v = diag(m)[, i])
       artificial_variable_index_set <- c(artificial_variable_index_set, ncol(A))
       artificial_variable_row_index_set <- c(artificial_variable_row_index_set, i)
@@ -113,7 +119,7 @@ construct_tableau <- function(A, b, c, sense = 1, relation = rep("<=", length(b)
 #'
 #' @param t \code{matrix}, a simplex tableau
 #'
-#' @return \code{logical}, TRUE = tableau is optimal, FALSE = tableau is not optimal)
+#' @return \code{logical}, TRUE = tableau is optimal, FALSE = tableau is not optimal
 #' @export
 #'
 optimality_check <- function(t) {
@@ -206,8 +212,8 @@ get_pivot_row <- function(t, pivot_column) {
 #' @export
 #'
 pivot <- function(t, pivot_row, pivot_column) {
-  pivot_elemnt <- t[pivot_row, pivot_column]
-  t[pivot_row, ] <- t[pivot_row, ] / pivot_elemnt
+  pivot_element <- t[pivot_row, pivot_column]
+  t[pivot_row, ] <- t[pivot_row, ] / pivot_element
   for (r in 1:nrow(t)) {
     if (r != pivot_row) {
       t[r, ] <- t[r, ] - t[r, pivot_column] * t[pivot_row, ]
@@ -233,9 +239,9 @@ simplex <- function(tableau, max_iter = 100) {
   print(tableau)
   iter <- 1
   while (!optimality_check(tableau) & iter < max_iter) {
-    print("----------------------------------------------")
+    print("--------------------------------------------------------------------")
     print(paste("Iteration", iter))
-    print("----------------------------------------------")
+    print("--------------------------------------------------------------------")
     pivot_column <- get_pivot_column(tableau)
     print(paste("Pivot column:", pivot_column))
     pivot_row <- get_pivot_row(tableau, pivot_column)
@@ -248,9 +254,9 @@ simplex <- function(tableau, max_iter = 100) {
     print(tableau)
     iter <- iter + 1
   }
-  print("----------------------------------------------")
+  print("--------------------------------------------------------------------")
   print("Status: End")
-  print("----------------------------------------------")
+  print("--------------------------------------------------------------------")
 }
 
 ### ------------------------------------------------------------------------------------------------

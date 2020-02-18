@@ -10,7 +10,7 @@ reference:
       A function to construct a (primal) feasible canonical simplex tableau.
     contents:
       - construct_tableau
-  - title: "Primal Simplex Functions"
+  - title: "Primal Simplex"
     desc: >
       Functions used in the primal simplex algorithm.
     contents:
@@ -21,4 +21,13 @@ reference:
       - pivot
       - simplex
       - simplexR
-  - title: "Dual Simplex Functions"
+  - title: "Dual Simplex"
+    desc: >
+      Functions used in the dual simplex algorithm.
+    contents:
+      - construct_dual_feasible_tableau
+      - is_dual_optimal
+      - get_dual_pivot_row
+      - get_dual_pivot_column
+      - dual_simplex
+

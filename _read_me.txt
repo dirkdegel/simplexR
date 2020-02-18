@@ -1,4 +1,5 @@
 usethis::use_pkgdown()
+devtools::document(roclets = c('rd', 'collate', 'namespace', 'vignette'))
 pkgdown::build_site()
 pkgdown::build_reference_index()
 

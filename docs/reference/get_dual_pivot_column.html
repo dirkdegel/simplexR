@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>optimality_check — optimality_check • simplexR</title>
+<title>get_dual_pivot_colum — get_dual_pivot_column • simplexR</title>
 
 
 <!-- jquery -->
@@ -35,8 +35,8 @@
 
 
 
-<meta property="og:title" content="optimality_check — optimality_check" />
-<meta property="og:description" content="optimality_check" />
+<meta property="og:title" content="get_dual_pivot_colum — get_dual_pivot_column" />
+<meta property="og:description" content="get_dual_pivot_colum" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -126,16 +126,16 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>optimality_check</h1>
-    <small class="dont-index">Source: <a href='https://github.com/dirkdegel/simplexR/blob/master/R/primal_simplex_functions.R'><code>R/primal_simplex_functions.R</code></a></small>
-    <div class="hidden name"><code>optimality_check.Rd</code></div>
+    <h1>get_dual_pivot_colum</h1>
+    <small class="dont-index">Source: <a href='https://github.com/dirkdegel/simplexR/blob/master/R/dual_simplex_functions.R'><code>R/dual_simplex_functions.R</code></a></small>
+    <div class="hidden name"><code>get_dual_pivot_column.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>optimality_check</p>
+    <p>get_dual_pivot_colum</p>
     </div>
 
-    <pre class="usage"><span class='fu'>optimality_check</span>(<span class='no'>t</span>)</pre>
+    <pre class="usage"><span class='fu'>get_dual_pivot_column</span>(<span class='no'>t</span>, <span class='no'>dual_pivot_row</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -144,11 +144,15 @@
       <th>t</th>
       <td><p><code>matrix</code>, a simplex tableau</p></td>
     </tr>
+    <tr>
+      <th>dual_pivot_row</th>
+      <td><p><code>scalar</code>, index of the pivot row</p></td>
+    </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>logical</code>, TRUE = tableau is optimal, FALSE = tableau is not optimal</p>
+    <p><code>scalar</code>, index of the pivot column</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

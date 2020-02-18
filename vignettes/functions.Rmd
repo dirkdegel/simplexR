@@ -44,8 +44,8 @@ get_pivot_row <- function(t, pivot_column) {
 
 ```R
 pivot <- function(t, pivot_row, pivot_column) {
-  pivot_elemnt <- t[pivot_row, pivot_column]
-  t[pivot_row, ] <- t[pivot_row, ] / pivot_elemnt
+  pivot_element <- t[pivot_row, pivot_column]
+  t[pivot_row, ] <- t[pivot_row, ] / pivot_element
   for (r in 1:nrow(t)) {
     if (r != pivot_row) {
       t[r, ] <- t[r, ] - t[r, pivot_column] * t[pivot_row, ]

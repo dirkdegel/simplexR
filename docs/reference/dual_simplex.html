@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>optimality_check — optimality_check • simplexR</title>
+<title>dual_simplex — dual_simplex • simplexR</title>
 
 
 <!-- jquery -->
@@ -35,8 +35,8 @@
 
 
 
-<meta property="og:title" content="optimality_check — optimality_check" />
-<meta property="og:description" content="optimality_check" />
+<meta property="og:title" content="dual_simplex — dual_simplex" />
+<meta property="og:description" content="dual_simplex" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -126,29 +126,33 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>optimality_check</h1>
-    <small class="dont-index">Source: <a href='https://github.com/dirkdegel/simplexR/blob/master/R/primal_simplex_functions.R'><code>R/primal_simplex_functions.R</code></a></small>
-    <div class="hidden name"><code>optimality_check.Rd</code></div>
+    <h1>dual_simplex</h1>
+    <small class="dont-index">Source: <a href='https://github.com/dirkdegel/simplexR/blob/master/R/dual_simplex_functions.R'><code>R/dual_simplex_functions.R</code></a></small>
+    <div class="hidden name"><code>dual_simplex.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>optimality_check</p>
+    <p>dual_simplex</p>
     </div>
 
-    <pre class="usage"><span class='fu'>optimality_check</span>(<span class='no'>t</span>)</pre>
+    <pre class="usage"><span class='fu'>dual_simplex</span>(<span class='no'>tableau</span>, <span class='kw'>max_iter</span> <span class='kw'>=</span> <span class='fl'>100</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>t</th>
+      <th>tableau</th>
       <td><p><code>matrix</code>, a simplex tableau</p></td>
+    </tr>
+    <tr>
+      <th>max_iter</th>
+      <td><p><code>scalar</code>, maximum number of iterations</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>logical</code>, TRUE = tableau is optimal, FALSE = tableau is not optimal</p>
+    <p>(primal and dual) optimal simplex tableau or stops execution in case of an unbounded problem</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

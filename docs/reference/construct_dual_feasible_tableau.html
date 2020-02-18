@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>optimality_check — optimality_check • simplexR</title>
+<title>construct_dual_feasible_tableau — construct_dual_feasible_tableau • simplexR</title>
 
 
 <!-- jquery -->
@@ -35,8 +35,8 @@
 
 
 
-<meta property="og:title" content="optimality_check — optimality_check" />
-<meta property="og:description" content="optimality_check" />
+<meta property="og:title" content="construct_dual_feasible_tableau — construct_dual_feasible_tableau" />
+<meta property="og:description" content="construct_dual_feasible_tableau" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -126,29 +126,41 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>optimality_check</h1>
-    <small class="dont-index">Source: <a href='https://github.com/dirkdegel/simplexR/blob/master/R/primal_simplex_functions.R'><code>R/primal_simplex_functions.R</code></a></small>
-    <div class="hidden name"><code>optimality_check.Rd</code></div>
+    <h1>construct_dual_feasible_tableau</h1>
+    <small class="dont-index">Source: <a href='https://github.com/dirkdegel/simplexR/blob/master/R/dual_simplex_functions.R'><code>R/dual_simplex_functions.R</code></a></small>
+    <div class="hidden name"><code>construct_dual_feasible_tableau.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>optimality_check</p>
+    <p>construct_dual_feasible_tableau</p>
     </div>
 
-    <pre class="usage"><span class='fu'>optimality_check</span>(<span class='no'>t</span>)</pre>
+    <pre class="usage"><span class='fu'>construct_dual_feasible_tableau</span>(<span class='no'>A</span>, <span class='no'>b</span>, <span class='no'>c</span>, <span class='no'>sense</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>t</th>
-      <td><p><code>matrix</code>, a simplex tableau</p></td>
+      <th>A</th>
+      <td><p><code>matrix</code>, coefficient matrix of the LP</p></td>
+    </tr>
+    <tr>
+      <th>b</th>
+      <td><p><code>vector</code>, RHS</p></td>
+    </tr>
+    <tr>
+      <th>c</th>
+      <td><p><code>vector</code>, coefficients of the objective function</p></td>
+    </tr>
+    <tr>
+      <th>sense</th>
+      <td><p><code>scalar</code>, max = 1, min = -1 (default = 1)</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>logical</code>, TRUE = tableau is optimal, FALSE = tableau is not optimal</p>
+    <p><code>matrix</code>, initial (dual feasible) simplex tableau</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
