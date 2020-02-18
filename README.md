@@ -46,7 +46,7 @@ Please post an issue first before sending a PR.
 
 - Linear Programming 1: Introduction, George B. Dantzig, Mukund N. Thapa
 - Linear Programming 2: Theory and Extensions, George B. Dantzig, Mukund N. Thapa
-- Algorithmische Diskrete Mathematik II: Lineare Optimierung, [Vorlesungsskript](http://www.zib.de/groetschel/teaching/skriptADMII.pdf), Martin Grötschel 
+- Algorithmische Diskrete Mathematik II: Lineare Optimierung, [Vorlesungsskript](http://www.zib.de/groetschel/teaching/skriptADMII.pdf), Martin Grötschel
 - Grundlagen des Operations Research: Mit Aufgaben und Lösungen, Brigitte Werners
 - Operations Research - Deterministische Modelle und Methoden - Stephan Dempe, Heiner Schreier, 1. Auflage September 2006, Wiesbaden
 
@@ -55,3 +55,20 @@ Please post an issue first before sending a PR.
 [linprog](https://cran.r-project.org/web/packages/linprog/index.html) follows a similar approach, but it seems the package is not maintained anymore.
 
 See CRAN Task View: [Optimization and Mathematical Programming]( https://cran.r-project.org/web/views/Optimization.html) for further information.
+
+## Industrial Solutions
+
+[optimization_software](https://en.wikipedia.org/wiki/List_of_optimization_software)
+
+## Open Source Solver
+
+- Coin OR
+- GLPK
+- lp_splve
+
+## Commercial Solver
+
+- Gurobi
+- Cplex
+- Xpress
+- Scip

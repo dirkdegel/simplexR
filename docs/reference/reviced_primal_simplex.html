@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>optimality_check — optimality_check • simplexR</title>
+<title>reviced_primal_simplex — reviced_primal_simplex • simplexR</title>
 
 
 <!-- jquery -->
@@ -35,8 +35,8 @@
 
 
 
-<meta property="og:title" content="optimality_check — optimality_check" />
-<meta property="og:description" content="Checks if the current tableau is (primal) optimality." />
+<meta property="og:title" content="reviced_primal_simplex — reviced_primal_simplex" />
+<meta property="og:description" content="Reviced primal simplex alorithm." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -126,29 +126,41 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>optimality_check</h1>
-    <small class="dont-index">Source: <a href='https://github.com/dirkdegel/simplexR/blob/master/R/primal_simplex_simplex.R'><code>R/primal_simplex_simplex.R</code></a></small>
-    <div class="hidden name"><code>optimality_check.Rd</code></div>
+    <h1>reviced_primal_simplex</h1>
+    <small class="dont-index">Source: <a href='https://github.com/dirkdegel/simplexR/blob/master/R/reviced_primal_simplex_agorithm.R'><code>R/reviced_primal_simplex_agorithm.R</code></a></small>
+    <div class="hidden name"><code>reviced_primal_simplex.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Checks if the current tableau is (primal) optimality.</p>
+    <p>Reviced primal simplex alorithm.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>optimality_check</span>(<span class='no'>t</span>)</pre>
+    <pre class="usage"><span class='fu'>reviced_primal_simplex</span>(<span class='no'>A</span>, <span class='no'>b</span>, <span class='no'>obj</span>, <span class='kw'>basic</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>((<span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>ncol</a></span>(<span class='no'>A</span>) - <span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span>(<span class='no'>A</span>)):<span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>ncol</a></span>(<span class='no'>A</span>)))</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>t</th>
-      <td><p><code>matrix</code>, a simplex tableau</p></td>
+      <th>A</th>
+      <td><p><code>matrix</code>, coefficient matrix of the LP</p></td>
+    </tr>
+    <tr>
+      <th>b</th>
+      <td><p><code>vector</code>, RHS</p></td>
+    </tr>
+    <tr>
+      <th>obj</th>
+      <td><p><code>vector</code>, coefficients of the objective function</p></td>
+    </tr>
+    <tr>
+      <th>basic</th>
+      <td><p><code>vector</code>, indices of a (primal feasible) basis</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>logical</code>, TRUE = tableau is optimal, FALSE = tableau is not optimal</p>
+    <p>optimal basic feasible solution (BFS)</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

@@ -117,6 +117,8 @@ construct_tableau <- function(A, b, c, sense = 1, relation = rep("<=", length(b)
 
 #' optimality_check
 #'
+#' Checks if the current tableau is (primal) optimality.
+#'
 #' @param t \code{matrix}, a simplex tableau
 #'
 #' @return \code{logical}, TRUE = tableau is optimal, FALSE = tableau is not optimal
