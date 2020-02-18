@@ -1,7 +1,7 @@
 # Simplex Algorithm in R
 
 The `simplexR` package was developed with the intention to be used for educational purposes. The idea is to allow students to solve
-linear programs with the **Simplex Method** in a similar way it is thought in most courses and text books (see literature below). Dedicated functions allow the user to apply the simplex step by step and be able to verify their own calculations. The aim is to allow a more comprehensive understanding of the **Simplex Algorithm** (primal simplex algorithm, bigM-method, two-phase simplex algorithm, rivised simplex algorithm, dual simplex algorithm).
+linear programs with the **Simplex Method** in a similar way it is thought in most courses and text books (see literature below). Dedicated functions allow the user to apply the simplex step by step and be able to verify their own calculations. The aim is to allow a more comprehensive understanding of the **Simplex Algorithm** (primal simplex algorithm, bigM-method, two-phase simplex algorithm, revised simplex algorithm, dual simplex algorithm).
 
 Additionally, the implementation in `R` is meant to provide an opportunity for users to get started with programming via an algorithm they are well familiar with.
 
