@@ -274,7 +274,7 @@ simplex <- function(tableau, max_iter = 100) {
 #' @param relation \code{vector}, {"<=", "=", "=>"} (default = "<=")
 #' @param max_iter \code{scalar}, maximum number of iterations (default = 100)
 #'
-#' @return
+#' @return Solves (find an optimal solution or reports that the problem is not solveable) a generic linear program. Calls \code{construct_tableau} and \code{simplex}.
 #' @export
 #'
 simplexR <- function(A, b, c, sense = 1, relation = rep("<=", length(b)), max_iter = 100) {
