@@ -3,6 +3,7 @@
 export(construct_dual_feasible_tableau)
 export(construct_tableau)
 export(dual_simplex)
+export(get_arg_min_conditional)
 export(get_dual_pivot_column)
 export(get_dual_pivot_row)
 export(get_pivot_column)

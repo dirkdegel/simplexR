@@ -2,7 +2,9 @@ pandoc: 2.3.1
 pkgdown: 1.4.1
 pkgdown_sha: ~
 articles:
-  additional_examples: additional_examples.html
-  examples: examples.html
+  examples_dual_simplex: examples_dual_simplex.html
+  examples_primal_simplex_1: examples_primal_simplex_1.html
+  examples_primal_simplex_2: examples_primal_simplex_2.html
+  examples_revised_simplex: examples_revised_simplex.html
   functions: functions.html
 

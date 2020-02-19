@@ -1,8 +1,8 @@
 ---
-title: "Examples --- Generic Form of LP"
+title: "Examples --- Primal Simplex, Generic Form of LP"
 ---
 
-```{r message = FALSE, warning = FALSE, includet = FALSE}
+```{r message = FALSE, warning = FALSE, include = FALSE}
 
 library(simplexR)
 
@@ -76,7 +76,7 @@ A <- matrix(c(
 
 b <- c(0, 0, 1)
 c <- c(3/4, -20, 1/2, -6)
-sense <- 1 
+sense <- 1
 relation <- c("<=", "<=", "<=")
 
 ```
@@ -93,4 +93,3 @@ cycling_case
 simplex(tableau = cycling_case, max_iter = 7)
 
 ```
-

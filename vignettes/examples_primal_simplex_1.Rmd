@@ -1,14 +1,14 @@
 ---
-title: "Examples --- Canonical Form of LP"
+title: "Examples --- Primal Simplex, Canonical Form of LP"
 ---
 
-```{r message = FALSE, warning = FALSE, includet = FALSE}
+```{r message = FALSE, warning = FALSE, include = FALSE}
 
 library(simplexR)
 
 ```
 
-```{r, message = FALSE, warning = FALSE, includet = FALSE, echo = FALSE}
+```{r, message = FALSE, warning = FALSE, include = FALSE, echo = FALSE}
 
 source("_gMOIP_functions.R")
 

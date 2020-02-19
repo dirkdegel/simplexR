@@ -30,4 +30,10 @@ reference:
       - get_dual_pivot_row
       - get_dual_pivot_column
       - dual_simplex
+  - title: "Reviced Primal Simplex Algorithm"
+    desc: >
+      Functions used in the reviced primal simplex algorithm.
+    contents:
+      - get_arg_min_conditional
+      - reviced_primal_simplex
 
