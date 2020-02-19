@@ -20,9 +20,9 @@ get_arg_min_conditional <- function(lhs, rhs) {
 
 
 
-#' reviced_primal_simplex
+#' revised_primal_simplex
 #'
-#' Reviced primal simplex alorithm.
+#' Revised primal simplex algorithm.
 #'
 #' @param A \code{matrix}, coefficient matrix of the LP
 #' @param b \code{vector}, RHS
@@ -33,8 +33,8 @@ get_arg_min_conditional <- function(lhs, rhs) {
 #' @export
 #'
 #' @examples
-reviced_primal_simplex <- function(A, b, obj, basic = c((ncol(A) - nrow(A)):ncol(A))) {
-  print("Initialize")
+revised_primal_simplex <- function(A, b, obj, basic = c((ncol(A) - nrow(A)):ncol(A))) {
+  print("Initialise")
 
   idx <- c(1:ncol(A))
   BI <- solve(A[, basic])

@@ -64,7 +64,7 @@ See CRAN Task View: [Optimization and Mathematical Programming]( https://cran.r-
 
 - Coin OR
 - GLPK
-- lp_splve
+- lp_solve
 
 ## Commercial Solver
 

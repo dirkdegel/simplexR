@@ -2,7 +2,7 @@ Package: simplexR
 Type: Package
 Date: 2020-02-15
 Title: Simplex Algorithm
-Version: 0.0.0.9002
+Version: 0.0.0.9003
 Authors@R: person("Dirk", "Degel", role = c("aut", "cre"), email = "dirk.degel@gmail.com") 
 Author: Dirk Degel [aut, cre]
 Maintainer: Dirk Degel <dirk.degel@gmail.com>

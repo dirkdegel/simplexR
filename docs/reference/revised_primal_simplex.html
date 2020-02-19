@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>simplex — simplex • simplexR</title>
+<title>revised_primal_simplex — revised_primal_simplex • simplexR</title>
 
 
 <!-- jquery -->
@@ -35,8 +35,8 @@
 
 
 
-<meta property="og:title" content="simplex — simplex" />
-<meta property="og:description" content="simplex" />
+<meta property="og:title" content="revised_primal_simplex — revised_primal_simplex" />
+<meta property="og:description" content="Revised primal simplex algorithm." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -132,33 +132,41 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>simplex</h1>
-    <small class="dont-index">Source: <a href='https://github.com/dirkdegel/simplexR/blob/master/R/primal_simplex_simplex.R'><code>R/primal_simplex_simplex.R</code></a></small>
-    <div class="hidden name"><code>simplex.Rd</code></div>
+    <h1>revised_primal_simplex</h1>
+    <small class="dont-index">Source: <a href='https://github.com/dirkdegel/simplexR/blob/master/R/revised_primal_simplex_agorithm.R'><code>R/revised_primal_simplex_agorithm.R</code></a></small>
+    <div class="hidden name"><code>revised_primal_simplex.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>simplex</p>
+    <p>Revised primal simplex algorithm.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>simplex</span>(<span class='no'>tableau</span>, <span class='kw'>max_iter</span> <span class='kw'>=</span> <span class='fl'>100</span>)</pre>
+    <pre class="usage"><span class='fu'>revised_primal_simplex</span>(<span class='no'>A</span>, <span class='no'>b</span>, <span class='no'>obj</span>, <span class='kw'>basic</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>((<span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>ncol</a></span>(<span class='no'>A</span>) - <span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span>(<span class='no'>A</span>)):<span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>ncol</a></span>(<span class='no'>A</span>)))</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>tableau</th>
-      <td><p><code>matrix</code>, simplex tableau in canonical form</p></td>
+      <th>A</th>
+      <td><p><code>matrix</code>, coefficient matrix of the LP</p></td>
     </tr>
     <tr>
-      <th>max_iter</th>
-      <td><p><code>scalar</code>, maximum number of iterations</p></td>
+      <th>b</th>
+      <td><p><code>vector</code>, RHS</p></td>
+    </tr>
+    <tr>
+      <th>obj</th>
+      <td><p><code>vector</code>, coefficients of the objective function</p></td>
+    </tr>
+    <tr>
+      <th>basic</th>
+      <td><p><code>vector</code>, indices of a (primal feasible) basis</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>optimal simplex tableau or stops execution in case of an unbounded problem</p>
+    <p>optimal basic feasible solution (BFS)</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
